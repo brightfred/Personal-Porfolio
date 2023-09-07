@@ -1,0 +1,748 @@
+/* mainstyle section start here */
+
+
+/* Import external fonts from Google Fonts for styling */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+:root {
+    --main-color: #FBE106;
+    --secondary-color: #301934;
+}
+
+/* Reset default styles for all elements */
+* {
+    font-family: 'Ubuntu', sans-serif;   /* Set font for all elements */
+    margin: 0;                           /* Remove default margin */
+    padding: 0;                          /* Remove default padding */
+    box-sizing: border-box;              /* Include padding and border in the element's total width and height */
+    outline: none;                       /* Remove outline */
+    border: none;                        /* Remove default borders */
+    text-decoration: none;
+    transition: all .5s linear;          /* Apply a smooth transition for everything */
+    line-height: 1.5;                   /* Set the line height for text */
+}
+
+
+/* Set the base font size and hide horizontal overflow */
+html {
+    font-size: 62.5%;            /* Set the root font size for easier rem-based calculations (1rem = 10px) */
+    overflow-x: hidden;          /* Hide horizontal overflow to prevent scrolling */
+}
+
+body {
+    background-color: #fff;
+    padding-left: 30rem;
+}
+
+.fade-in {
+    animation: fade-in-animation 1s ease-in-out forwards;   /* Apply a fade-in animation */
+}
+
+@keyframes fade-in-animation {
+    0% {
+        opacity: .75;    /* Start with reduced opacity */
+    }
+    100% {
+        opacity: 1;      /* End with full opacity */
+    }
+}
+
+/* Main CSS style section ends here */
+
+
+
+
+
+/* .navbar section starts here */
+
+/* Styles for the website header */
+header {
+    position: fixed;              /* Fixed position at the left of the viewport */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;                   /* Place header above other content */
+    flex-flow: column;            /* Arrange header items vertically */
+    padding: 8rem 2rem;
+    width: 30rem;
+    text-align: center;           /* Center-align text within the header */
+}
+
+header .logo {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+/* Apply the main color to a span element within the logo */
+header .logo span {
+    color: var(--main-color);
+}
+
+/* Styles for navigation links in the header */
+header .navbar a {
+    display: block;               /* Display links as block elements */
+    font-size: 2.5rem;            /* Font size for links */
+    color: #fff;
+    text-decoration: none;
+    margin: 2rem 0rem;            /* Vertical margin to links */
+}
+
+/* Styles for navigation link hover state */
+header .navbar a:hover {
+    letter-spacing: .2rem;        
+    color: var(--main-color);     
+}
+
+/* Styles for social media icons in the header */
+header .follow a {
+    font-size: 4rem;              /* Font size for icons */
+    color: #fff;
+    margin: 0.7rem;               /* Margin around icons */
+}
+
+/* Styles for social media icon when hovered */
+header .follow a:hover {
+    color: var(--main-color);
+}
+
+/* Define a bounce animation for social media icons */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);   /* Initial and final state of the bounce animation */
+    }
+    50% {
+        transform: translateY(-10px);  /* Bounce effect halfway through the animation */
+    }
+}
+
+/* Apply bounce animation on social media icon hover */
+.follow a:hover {
+    animation: bounce .75s ease-in-out infinite;
+}
+
+/* Styles for responsive menu bars icon */
+#menu-bars {
+    position: fixed;               /* Fixed position at the top right of the viewport */
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;                   /* Place the menu bars icon above other content */
+    background: var(--secondary-color);
+    color: #fff;
+    border-radius: .5rem;          /* For a rounded appearance */
+    padding: 1rem 1.5rem;
+    font-size: 3rem;               /* Font size for the icon */
+    cursor: pointer;               /* Pointer cursor for interaction */
+    display: none;                 /* Initially hidden on larger screens */
+}
+
+/* Styles for search and filter containers */
+.search,
+.filter {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center-align items horizontally */
+    margin-top: 1rem;        /* Add margin to separate it from the search bar */
+}
+
+/* Styles for the search input field and filter input field */
+.searchTerm,
+.filterTerm {
+    width: 50%;
+    padding: 5px;
+    height: 27px;
+    border-radius: 5px;
+    color: var(--main-color);
+}
+
+.searchTerm:focus,
+.filterTerm:focus {
+    color: var(--secondary-color);
+}
+
+/* Styles for the search button and filter button */
+.searchButton,
+.filterButton {
+    width: 2.6rem;
+    height: 2.3rem;
+    background: var(--secondary-color);
+    text-align: center;
+    color: #fff;
+    border-radius: .5rem;
+    margin-left: 1rem; /* Add some space between the filter input and the button */
+}
+
+/* Styling for the search button and filter button when hovered */
+.searchButton:hover,
+.filterButton:hover {
+    color: var(--main-color);
+    transform: scale(1.20);
+}
+section {
+    padding: 2rem;            
+    margin: 0 auto;           /* Center-align the section within container */
+    min-height: 100vh;        /* Minimum height of 100 viewport heights */
+    max-width: 1200px;        
+}
+
+
+/* homepage section starts here*/
+
+
+.home {
+    display: flex;            
+    align-items: center;      /* Center-align flex items vertically */
+    flex-wrap: wrap;          /* Flex items to wrap to the next line if necessary */
+    gap: 1.5rem;              /* Gap between flex items */
+}
+
+.home .home-image {
+    flex: 1 1 40rem;          /* Flex properties (shrink,grow,basis) for the home page image */
+}
+
+.home .home-image img {
+    width: 85%;               
+}
+
+.home .content {
+    flex: 1 1 40rem;          /* Flex properties (shrink,grow,basis) */
+}
+
+.home .content .hi {
+    font-size: 2rem;          
+    color: var(--secondary-color); 
+}
+
+.home .content h1 {
+    font-size: 4rem;          
+    color: var(--secondary-color); 
+    text-transform: uppercase; 
+}
+
+.home .content h1 span {
+    color: var(--main-color); 
+}
+
+.home .content .info {
+    font-size: 3rem;          
+    color: var(--secondary-color); 
+    padding: .5rem 0;         
+}
+
+.home .content .text {
+    font-size: 2rem;          /* Font size for the text element */
+    color: var(--secondary-color); 
+    padding: .5rem 0;         
+}
+
+
+.heading {
+    font-size: 4rem;          
+    padding: 1rem;            /* Padding around headings */
+    color: var(--secondary-color); 
+    text-transform: uppercase; 
+}
+
+.heading span {
+    color: var(--main-color); /* Apply main color to a span element within headings */
+}
+
+/* Home-page section end here */
+
+
+
+
+/* About-me section start here  */
+
+/* Define a flex container for the row of elements in the "about" section */
+.about .row {
+    display: flex;              /* Flexbox to arrange child elements */
+    flex-wrap: wrap;            /* Wrap to the next row if there's not enough space */
+    gap: 2rem;                  
+    justify-content: center;    /* Horizontally center-align elements within the container */
+}
+
+
+/* Flex container for the boxes inside the "about" section */
+/* Basis: 50% of the container width minus 1.5rem  */
+.about .box-container {
+    flex: 1 1 calc(50% - 1.5rem);
+}
+
+
+/* Style for individual boxes within the container */
+.about .box-container .box {
+    display: flex;   
+    justify-content: space-evenly; 
+    text-align: center;         /* Center-align text within the box */
+    margin: 1.5rem 0;           /* Margin above and below the box */
+    background-color: var(--secondary-color); 
+    padding: 1rem;              
+    border-radius: 10px;      
+    height: 15rem;              
+    width: 10rem;               
+}
+
+/* Style for the "span" element inside the box */
+.about .box-container .box span {
+    font-size: 1.5rem;          
+    color: white;               
+    transition: color 0.2s, transform 0.5s ease-in-out; /* Smooth transitions for color */
+}
+
+/* Style for the heading (h3) inside the box */
+.about .box-container .box h3 {
+    font-size: 2rem;            
+    font-weight: normal;        
+    margin-top: 1.5rem;        
+    margin-bottom: 1rem;        
+    color: var(--main-color);   
+    transition: color 0.2s, transform 0.5s ease-in-out; /* Smooth transitions for color */
+}
+
+/* Style for the paragraph (p) inside the box */
+.about .box-container .box p {
+    line-height: 1.5rem;        
+    font-size: 1.7rem;          
+    color: white;               
+    transition: color 0.2s, transform 0.5s ease-in-out; /* Smooth transitions for color */
+}
+
+
+.about .box-container .box span,
+.about .box-container .box p {
+    transition: letter-spacing 0.1s ease-in-out; /* Apply smooth transition for letter-spacing property */
+}
+
+.about .box-container .box:hover span,
+.about .box-container .box:hover p {
+    letter-spacing: 0.1rem;     
+    color: var(--main-color);   
+}
+
+/* about-me section end here  */
+
+
+
+/* skill section start here  */
+
+.skill .skills-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.skill .heading {
+    font-size: 4rem;
+    padding: 1rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+.skill .heading span {
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.skill .soft-skills {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skill .soft-skills li {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-color);
+    color: #fff;
+    border-radius: 2rem;
+    cursor:default;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.skill .soft-skills li:hover {
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.skill .skills {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.skill .skills .progress {
+    margin-top: 1rem;
+}
+
+/* Add or adjust styles for your progress bars here */
+.skill .skills .progress .bar {
+    margin: 1rem auto;
+    max-width: 70rem;
+    border: var(--border-bold);
+    padding: 1rem;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    cursor: default;
+}
+
+.skill .skills .progress .bar h3 {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    font-size: 2.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    border-radius: 10px;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.skill .skills .progress .bar span {
+    font-weight: normal;
+    color: var(--secondary-color);
+    transition: color 0.3s ease-in-out;
+}
+
+.skill .skills .progress .bar:hover {
+    transform: scale(1.05);
+    background-color: var(--main-color);
+}
+
+.skill .skills .progress .bar:hover h3 {
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+}
+
+.skill .skills .progress .bar:hover span {
+    color: var(--main-color);
+}
+
+.skill .skills .progress .bar:nth-child(1) h3 {
+    width: 60%;
+}
+
+.skill .skills .progress .bar:nth-child(2) h3 {
+    width: 40%;
+}
+
+.skill .skills .progress .bar:nth-child(3) h3 {
+    width: 35%;
+}
+
+.skill .skills .progress .bar:nth-child(4) h3 {
+    width: 30%;
+}
+
+/* skill section ends here */
+
+
+/* project section starts here  */
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.box {
+    flex: 1 1 30rem;
+    height: 23rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 1rem 1rem black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--secondary-color);
+    margin: 2rem 0;
+    perspective: 1000px;
+    cursor: pointer;
+    
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
+
+.box .front,
+.box .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items:center;
+    backface-visibility: hidden; 
+}
+
+.box .front {
+    background-color: var(--secondary-color);
+    color: #fff;
+    transform: rotateY(0deg); 
+}
+
+.box .back {
+    background-color: var(--secondary-color);
+    color: #fff;
+    transform: rotateY(180deg);
+    display: none;
+    backface-visibility: visible;
+}
+
+.box .back p {
+    font-size: 2rem;
+    color: #fff;
+}
+
+
+.box h3 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    margin:0;
+    color: var(--main-color);
+}
+.box .icon {
+    margin-top: 1rem;
+    font-size: 4rem;
+}
+
+.box:hover .icon{
+    animation: bounce 0.75s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+
+.box.flipped .back {
+    display: flex;
+}
+
+.box.flipped {
+    transform: rotateY(180deg);
+}
+
+
+
+.project .box-container .box.flipped {
+    transform: rotateY(180deg);
+}
+
+
+/* project section ends here  */
+
+
+/* contact section starts here */
+
+.contact .icons-container{
+    display: flex;
+    gap:1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+
+.contact .icons-container .icons{
+    flex: 1 1 25rem;
+    text-align: center;
+    padding: 2rem;
+    background:var(--secondary-color);
+    box-shadow: 0 .5rem 1rem black;
+    border-radius: .5rem;
+}
+
+.contact .icons-container .icons i{
+    height:5rem;
+    width:5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+    background: var(--main-color);
+    color:var(--secondary-color);
+    border-radius: 50%;
+}
+
+.contact .icons-container .icons h3{
+    color: #fff;
+    font-size: 2rem;
+    padding: .5rem 0;
+}
+
+.contact .icons-container .icons p{
+    color: #fff;
+    font-size: 1.7rem;
+}
+
+.contact .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.contact .row form{
+    flex:1 1 55rem;
+    background:var(--secondary-color);
+    padding: 0 2rem;
+    box-shadow: 0 .5rem 1rem black;
+    border-radius: .5rem;
+}
+
+.contact .row .map{
+    flex: 1 1 25rem;
+    border: 1rem solid #fff;
+    box-shadow: 0 .5rem 1rem black;
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.contact .row form .box,
+.contact .row form textarea{
+    width: 100%;
+    border-bottom: .1rem solid var(--secondary-color);
+    color:var(--secondary-color);
+    text-transform: none;
+    font-size: 1.7 rem;
+    padding: 1rem 0;
+    margin: 1rem 0;
+}
+
+.contact .row form .box:focus,
+.contact .row form textarea:focus{
+    background-origin: content-box;
+    border-color: var(--main-color);
+}
+
+.contact .row form .box::placeholder,
+.contact .row form textarea::placeholder{
+    text-transform: capitalize;
+}
+
+.contact .row form textarea{
+    height: 20rem;
+    resize: none;
+}
+
+.contact .row form .btn{
+    flex: 1 1 2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    border-radius: .5rem;
+    background-color: #fff;
+    color: var(--secondary-color);
+    font-size: 2rem;
+    width: 25rem;
+    }   
+    
+    .contact .row form .btn:hover{
+        background-color: var(--main-color);
+        color: var(--secondary-color);
+        letter-spacing: .1rem;
+    }
+    
+    
+
+    .contact .row form input {
+        background-color: #fff;
+        height: 3.5rem;
+    }
+
+
+
+
+/* contact section ends here */
+
+/* footer section starts here */
+
+
+/* media queries  */
+
+@media (max-width:991px){
+
+    html{
+        font-size: 55%;
+    }
+    body{
+        padding: 0;
+}
+.about .box-container .box {
+
+    width: 100%; 
+    height: auto;
+    font-size: 1rem;
+}
+
+    #menu-bars{
+        display: initial;
+}
+
+    header{
+        left: -120%;
+}
+
+    header.active{
+        left: 0%;
+    }
+
+}
+
+@media (max-width:450px){
+
+    html{
+    font-size: 50%;
+    }
+
+    header{
+        width: 100%;
+    }
+
+    .home .image img{
+    height: auto;
+    width: 100%;
+    }
+
+    .about .box-container .box {
+
+        width: 100%; 
+        height: auto;
+        font-size: 1rem;
+    }
+
+    .heading span{
+        font-size: 4rem;
+    }
+
+    .about h3{
+        font-size: 2rem;
+    }
+
+    .contact form .box{
+        width: 100%;
+    }
+}
