@@ -192,135 +192,8 @@ section {
     max-width: 1200px;        
 }
 
-#main-holder {
-    width: 50%; /* Adjusted to be similar to header's width */
-    height: 90vh; /* Adjusted to occupy 90% of the viewport height */
-    overflow-y: auto;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    background-color: var(--secondary-color);
-    border-radius: 20px; /* Adjusted to match your other styles */
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.2); /* Slightly reduced shadow intensity */
-    margin: 0 auto; /* Center-align the section within container */
-    border: #FBE106 5px solid; /* Using your main color */
-}
-
-#login-header {
-color: #FBE106;
-font-size: 4rem ;
-}
-
-#login-error-msg-holder {
-    width: 40%;
-    height: 40%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-}
-
-#login-error-msg {
-    width: 100%; /* Adjusted for better readability */
-    text-align: center;
-    margin: 0;
-    padding: 1rem; /* Adjusted padding for consistency */
-    font-size: 2rem; /* Adjusted font-size to match other styles */
-    font-weight: bold;
-    color: var(--main-color); /* Using your main color */
-    border: 1px solid var(--main-color); /* Using your main color */
-    background-color: #e58f8f; /* Retained this as it's error specific */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    border-radius: 10px;
-}
-
-#error-msg-second-line {
-    display: block;
-}
-
-#login-form {
-    align-self: flex-start;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-}
-
-.login-form-field::placeholder {
-    color: var(--secondary-color); /* Using your secondary color for placeholder */
-    font-size: 1.5rem; /* Adjusted font-size to match other styles */
-}
-
-.login-form-field {
-    border: none;
-    border-bottom: 1px solid var(--secondary-color); /* Using your secondary color */
-    margin-bottom: 2rem; /* Adjusted margin for better spacing */
-    border-radius: 5px; /* Adjusted to match your other styles */
-    outline: none;
-    padding: 1rem; /* Adjusted padding for consistency */
-    font-size: 1.5rem; /* Adjusted font-size to match other styles */
-    color: var(--main-color); /* Using your main color */
-    width: 100%;
-}
-
-#login-form-submit {
-    width: 100%;
-    padding: 1rem; /* Adjusted padding for consistency */
-    border: none;
-    border-radius: 5px; /* Adjusted to match your other styles */
-    color: var(--secondary-color); /* White color for text */
-    font-weight: bold;
-    background-color: #fff; /* Using your main color */
-    cursor: pointer;
-    font-size: 2rem; /* Adjusted font-size to match other styles */
-    outline: none;
-}
-
-#login-form-submit:hover {
-    background-color: var(--main-color); 
-    color: var(--secondary-color); /* Using your secondary color */
-    transform: scale(1.05);
-}
-
-.input-container:hover {
-    transform: scale(1.05);
-}
-
-.input-container {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-}
-
-/* Styles for the icon inside the input */
-.input-icon {
-    position: absolute;
-    right: 10px;        
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none; /* So the icon doesn't interfere with the input */
-    font-size: 20px;     /* Adjust this value to change the icon size */
-    color: var(--secondary-color); /* Using your secondary color */
-}
-
-.links-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.forgot-password, .register {
-    text-decoration: none;
-    font-size: 1.2rem; 
-    color: #fff;
-    transition: color 0.3s;
-}
-
-.forgot-password:hover, .register:hover {
-    color: var(--main-color); /* Using your main color for hover effect */
-}
-
-.modal {
+/* Basic styling for the modal */
+#register-modal {
     display: none;
     position: fixed;
     top: 0;
@@ -328,111 +201,22 @@ font-size: 4rem ;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    overflow: auto;
-    z-index: 9999;
+    z-index: 10000;
 }
-
 .modal-content {
-    position: relative; /* Allows absolute positioning within this container */
-    background-color: var(--secondary-color);
-    margin: auto;
-    padding: 40px;
-    width: 40%;
-    top: 50%; /* Moves the top edge to the center of the screen */
-    transform: translateY(-50%); /* Moves the content up by half its height */
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.2);
-    border: 5px solid var(--main-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.modal-content h1, .modal-content h2 {
-    font-size: 3rem; /* Adjusted font-size to match other styles */
-    color: var(--main-color); /* Using your main color */
-    margin-bottom: 1rem; /* Adjusted margin for better spacing */
-}
-
-.google-login-btn {
-    margin-top: 20px;  /* Space above the Google login button */
-    background-color: #4285F4;  /* Google blue color */
-    color: #fff;  /* White text */
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;  /* Align icon and text in the center */
-    justify-content: center;
-}
-
-.google-login-btn i {
-    margin-right: 10px;  /* Space between the icon and text */
-}
-
-.close-btn {
-    position: absolute; /* Absolute positioning */
-    top: 1px; /* 10px from the top of the modal-content */
-    right: 10px; /* 10px from the right of the modal-content */
-    color: var(--main-color);
-    font-size: 4rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #fff; /* Changed to white for better contrast */
-    text-decoration: none;
-    transform: scale(1.15);
-}
-
-.form-group {
-    margin-bottom: 15px; /* Provide spacing between each form group */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.modal-content input[type="text"],
-.modal-content input[type="email"],
-.modal-content input[type="password"],
-.modal-content input[type="submit"] {
-    width: 100%; /* Full width */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px; /* 5px border radius */
-    margin-top: 5px; /* Small top margin for better spacing */
-}
-
-.modal-content input[type="text"]:hover,
-.modal-content input[type="email"]:hover,
-.modal-content input[type="password"]:hover,
-.modal-content input[type="submit"]:hover {
-    transform: scale(1.05); /* Slightly increase size on hover */
-}
-.modal-content input[type="submit"] {
-    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
     background-color: #fff;
-    color: var(--secondary-color);
-    font-weight: bold;
-    margin-top: 20px;
-    border: none;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.modal-content input[type="submit"]:hover {
-    background-color: var(--main-color);
-    transform: scale(1.05);
-    transition: background-color 0.3s ease 0s, transform 0.3s ease 0s;
+.close-btn {
+    cursor: pointer;
+    float: right;
 }
-
-.form-group label {
-    margin-bottom: 5px; /* Spacing between label and input */
-    font-size: 1.5rem; /* Adjusted font-size to match other styles */
-    color: var(--main-color); /* Using your main color */
-}
-
 /* homepage section starts here*/
 
 

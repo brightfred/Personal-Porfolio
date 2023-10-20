@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Frederick Laroche Login</title>
 </head>
+
 <body class="fade-in">
 
     <div id="menu-bars" class="fa-solid fa-circle-chevron-down"></div>
@@ -26,89 +28,67 @@
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-            <div class="filter">
-                <input type="text" class="filterTerm" placeholder="Filter">
-                <button type="button" class="filterButton">
-                    <i class="fa fa-filter"></i>
-                </button>
-            </div>
-            
+
             <a href="/Src/login/login.html" id="showLoginModal" class="login-link" title="Login">
                 <span class="fa-solid fa-user"></span>
                 Login
             </a>
         </nav>
-        
+
         <div class="follow">
-            
-            <a href="https://github.com/Brightfred" target="_blank" class="fab fa-github-alt" title="GitHub profile"></a>
-            <a href="https://www.linkedin.com/in/frederick-laroche?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz69hEHAXQhyQKw3iSJG8iQ%3D%3D" target="_blank" class="fab fa-linkedin" title="LinkedIn"></a>
-            <a href="mailto:frederick-laroche@live.nmit.ac.nz" target="_blank" class="fa-regular fa-envelope" title="Email Link"></a>
+            <a href="https://github.com/Brightfred" target="_blank" class="fab fa-github-alt"
+                title="GitHub profile"></a>
+            <a href="https://www.linkedin.com/in/frederick-laroche?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz69hEHAXQhyQKw3iSJG8iQ%3D%3D"
+                target="_blank" class="fab fa-linkedin" title="LinkedIn"></a>
+            <a href="mailto:frederick-laroche@live.nmit.ac.nz" target="_blank" class="fa-regular fa-envelope"
+                title="Email Link"></a>
         </div>
-    </div>
-</header>
-<section>
-    <main id="main-holder">
-        <h1 id="login-header">Login</h1>
-        
-        <div id="login-error-msg-holder">
-        <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-        </div>
-        
-        <form id="login-form">
-        <div class="input-container">
-            <i class="fas fa-user input-icon"></i>
-            <input type="text" name= "username" id="username-field" class="login-form-field" placeholder="Username">
-            
-        </div>
-        <div class="input-container">
-            <i class="fas fa-lock input-icon"></i>
-        <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-            
-        </div>
-        <input type="submit" value="Login" id="login-form-submit">
-        <div class="links-container">
-            <a href="#" class="forgot-password">Forgot your password?</a>
-            <a href="#" class="register">Register</a>
-        </div>
-        </form>
+    </header>
 
-        
-
-
-    </main>
-
-    <div id="register-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Register</h2>
-            <form id="registration-form" method="post" action="/path-to-your-server-endpoint">
-                <div class="form-group">
-                    <label for="register-username">Username:</label>
-                    <input type="text" id="register-username" name="username" placeholder="Username" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="register-email">Email:</label>
-                    <input type="email" id="register-email" name="email" placeholder="Email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="register-password">Password:</label>
-                    <input type="password" id="register-password" name="password" placeholder="Password" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required>
-                </div>
-                
-                <input type="submit" value="Register">
+    <section>
+        <div>
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <input type="submit" value="Login">
+                <p>Don't have an account? <button id="show-register-modal">Register</button></p>
+                <!-- Added buttons for Google, Facebook, and GitHub login -->
+                <button id="login-with-google">Login with Google</button>
+                <button id="login-with-facebook">Login with Facebook</button>
+                <button id="login-with-github">Login with GitHub</button>
             </form>
         </div>
-    </div>
-    
-</section>
-<script src="login.js"></script>
+
+        <!-- Register Modal -->
+        <div id="register-modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-register-modal">&times;</span>
+                <h2>Register</h2>
+                <form id="registration-form">
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" name="register-email" required>
+                    <br>
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" name="register-password" required>
+                    <br>
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <br>
+                    <input type="submit" value="Register">
+                </form>
+            </div>
+        </div>
+
+        <!-- Firebase SDKs -->
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
+    </section>
+    <script type="module" src="/Src/firebaseSDks.js"></script>
 </body>
+
 </html>

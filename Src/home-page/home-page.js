@@ -11,3 +11,15 @@ window.onscroll = () =>{
     header.classList.remove('active');
 }
 
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  onSnapshot,
+  doc,
+  updateDoc,
+  deleteDoc,
+} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+
+const db = getFirestore();
+const dbRef = collection(db, "contacts");
