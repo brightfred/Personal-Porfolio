@@ -13,22 +13,32 @@
 
 /* Reset default styles for all elements */
 * {
-    font-family: 'Ubuntu', sans-serif;   /* Set font for all elements */
-    margin: 0;                           /* Remove default margin */
-    padding: 0;                          /* Remove default padding */
-    box-sizing: border-box;              /* Include padding and border in the element's total width and height */
-    outline: none;                       /* Remove outline */
-    border: none;                        /* Remove default borders */
+    font-family: 'Ubuntu', sans-serif;
+    /* Set font for all elements */
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+    outline: none;
+    /* Remove outline */
+    border: none;
+    /* Remove default borders */
     text-decoration: none;
-    transition: all .5s linear;          /* Apply a smooth transition for everything */
-    line-height: 1.5;                   /* Set the line height for text */
+    transition: all .5s linear;
+    /* Apply a smooth transition for everything */
+    line-height: 1.5;
+    /* Set the line height for text */
 }
 
 
 /* Set the base font size and hide horizontal overflow */
 html {
-    font-size: 62.5%;            /* Set the root font size for easier rem-based calculations (1rem = 10px) */
-    overflow-x: hidden;          /* Hide horizontal overflow to prevent scrolling */
+    font-size: 62.5%;
+    /* Set the root font size for easier rem-based calculations (1rem = 10px) */
+    overflow-x: hidden;
+    /* Hide horizontal overflow to prevent scrolling */
 }
 
 body {
@@ -37,15 +47,19 @@ body {
 }
 
 .fade-in {
-    animation: fade-in-animation 1s ease-in-out forwards;   /* Apply a fade-in animation */
+    animation: fade-in-animation 1s ease-in-out forwards;
+    /* Apply a fade-in animation */
 }
 
 @keyframes fade-in-animation {
     0% {
-        opacity: .75;    /* Start with reduced opacity */
+        opacity: .75;
+        /* Start with reduced opacity */
     }
+
     100% {
-        opacity: 1;      /* End with full opacity */
+        opacity: 1;
+        /* End with full opacity */
     }
 }
 
@@ -59,7 +73,8 @@ body {
 
 /* Styles for the website header */
 header {
-    position: fixed;              /* Fixed position at the left of the viewport */
+    position: fixed;
+    /* Fixed position at the left of the viewport */
     top: 0;
     left: 0;
     bottom: 0;
@@ -67,11 +82,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1;                   /* Place header above other content */
-    flex-flow: column;            /* Arrange header items vertically */
+    z-index: 1;
+    /* Place header above other content */
+    flex-flow: column;
+    /* Arrange header items vertically */
     padding: 8rem 2rem;
     width: 30rem;
-    text-align: center;           /* Center-align text within the header */
+    text-align: center;
+    /* Center-align text within the header */
 }
 
 header .logo {
@@ -88,24 +106,29 @@ header .logo span {
 
 /* Styles for navigation links in the header */
 header .navbar a {
-    display: block;               /* Display links as block elements */
-    font-size: 2.5rem;            /* Font size for links */
+    display: block;
+    /* Display links as block elements */
+    font-size: 2.5rem;
+    /* Font size for links */
     color: #fff;
     text-decoration: none;
-    margin: 2rem 0rem;            /* Vertical margin to links */
+    margin: 2rem 0rem;
+    /* Vertical margin to links */
 }
 
 /* Styles for navigation link hover state */
 header .navbar a:hover {
-    letter-spacing: .2rem;        
-    color: var(--main-color);     
+    letter-spacing: .2rem;
+    color: var(--main-color);
 }
 
 /* Styles for social media icons in the header */
 header .follow a {
-    font-size: 4rem;              /* Font size for icons */
+    font-size: 4rem;
+    /* Font size for icons */
     color: #fff;
-    margin: 0.7rem;               /* Margin around icons */
+    margin: 0.7rem;
+    /* Margin around icons */
 }
 
 /* Styles for social media icon when hovered */
@@ -115,11 +138,16 @@ header .follow a:hover {
 
 /* Define a bounce animation for social media icons */
 @keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);   /* Initial and final state of the bounce animation */
+
+    0%,
+    100% {
+        transform: translateY(0);
+        /* Initial and final state of the bounce animation */
     }
+
     50% {
-        transform: translateY(-10px);  /* Bounce effect halfway through the animation */
+        transform: translateY(-10px);
+        /* Bounce effect halfway through the animation */
     }
 }
 
@@ -130,17 +158,23 @@ header .follow a:hover {
 
 /* Styles for responsive menu bars icon */
 #menu-bars {
-    position: fixed;               /* Fixed position at the top right of the viewport */
+    position: fixed;
+    /* Fixed position at the top right of the viewport */
     top: 1rem;
     right: 1rem;
-    z-index: 2;                   /* Place the menu bars icon above other content */
+    z-index: 2;
+    /* Place the menu bars icon above other content */
     background: var(--secondary-color);
     color: #fff;
-    border-radius: .5rem;          /* For a rounded appearance */
+    border-radius: .5rem;
+    /* For a rounded appearance */
     padding: 1rem 1.5rem;
-    font-size: 3rem;               /* Font size for the icon */
-    cursor: pointer;               /* Pointer cursor for interaction */
-    display: none;                 /* Initially hidden on larger screens */
+    font-size: 3rem;
+    /* Font size for the icon */
+    cursor: pointer;
+    /* Pointer cursor for interaction */
+    display: none;
+    /* Initially hidden on larger screens */
 }
 
 /* Styles for search and filter containers */
@@ -148,8 +182,10 @@ header .follow a:hover {
 .filter {
     width: 100%;
     display: flex;
-    justify-content: center; /* Center-align items horizontally */
-    margin-top: 1rem;        /* Add margin to separate it from the search bar */
+    justify-content: center;
+    /* Center-align items horizontally */
+    margin-top: 1rem;
+    /* Add margin to separate it from the search bar */
 }
 
 /* Styles for the search input field and filter input field */
@@ -176,7 +212,8 @@ header .follow a:hover {
     text-align: center;
     color: #fff;
     border-radius: .5rem;
-    margin-left: 1rem; /* Add some space between the filter input and the button */
+    margin-left: 1rem;
+    /* Add some space between the filter input and the button */
 }
 
 /* Styling for the search button and filter button when hovered */
@@ -185,97 +222,214 @@ header .follow a:hover {
     color: var(--main-color);
     transform: scale(1.20);
 }
+
 section {
-    padding: 2rem;            
-    margin: 0 auto;           /* Center-align the section within container */
-    min-height: 100vh;        /* Minimum height of 100 viewport heights */
-    max-width: 1200px;        
+    padding: 2rem;
+    margin: 0 auto;
+    /* Center-align the section within container */
+    min-height: 100vh;
+    /* Minimum height of 100 viewport heights */
+    max-width: 1200px;
 }
 
-/* Basic styling for the modal */
-#register-modal {
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+}
+
+.login-section div {
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
+}
+
+.login-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--main-color);
+}
+
+.login-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #fff;
+    font-size: 15px;
+}
+
+
+.login-section input[type="email"],
+.login-section input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.login-section input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #fff;
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.login-section input[type="submit"]:hover {
+    background-color: #b9aa26;
+}
+
+.login-section p {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--main-color);
+}
+
+.login-section button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #fff;
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.login-section button:hover {
+    background-color: #b9aa26;
+}
+
+/* Register Modal styles */
+.login-section #register-modal {
     display: none;
+    /* Initially hidden */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 10000;
+    z-index: 1000;
 }
-.modal-content {
+
+.login-section .modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
 }
-.close-btn {
+
+.login-section button i {
+    margin-right: 10px;
+}
+
+
+.login-section .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
     cursor: pointer;
-    float: right;
+    color: #fff;
+    transition: color 0.3s ease;
 }
+
+
+
+.login-section i {
+    font-size: 15px;
+}
+
+.login-section .close-btn:hover {
+    color: var(--main-color);
+}
+
 /* homepage section starts here*/
 
 
 .home {
-    display: flex;            
-    align-items: center;      /* Center-align flex items vertically */
-    flex-wrap: wrap;          /* Flex items to wrap to the next line if necessary */
-    gap: 1.5rem;              /* Gap between flex items */
+    display: flex;
+    align-items: center;
+    /* Center-align flex items vertically */
+    flex-wrap: wrap;
+    /* Flex items to wrap to the next line if necessary */
+    gap: 1.5rem;
+    /* Gap between flex items */
 }
 
 .home .home-image {
-    flex: 1 1 40rem;          /* Flex properties (shrink,grow,basis) for the home page image */
+    flex: 1 1 40rem;
+    /* Flex properties (shrink,grow,basis) for the home page image */
 }
 
 .home .home-image img {
-    width: 85%;               
+    width: 85%;
 }
 
 .home .content {
-    flex: 1 1 40rem;          /* Flex properties (shrink,grow,basis) */
+    flex: 1 1 40rem;
+    /* Flex properties (shrink,grow,basis) */
 }
 
 .home .content .hi {
-    font-size: 2rem;          
-    color: var(--secondary-color); 
+    font-size: 2rem;
+    color: var(--secondary-color);
 }
 
 .home .content h1 {
-    font-size: 4rem;          
-    color: var(--secondary-color); 
-    text-transform: uppercase; 
+    font-size: 4rem;
+    color: var(--secondary-color);
+    text-transform: uppercase;
 }
 
 .home .content h1 span {
-    color: var(--main-color); 
+    color: var(--main-color);
 }
 
 .home .content .info {
-    font-size: 3rem;          
-    color: var(--secondary-color); 
-    padding: .5rem 0;         
+    font-size: 3rem;
+    color: var(--secondary-color);
+    padding: .5rem 0;
 }
 
 .home .content .text {
-    font-size: 2rem;          /* Font size for the text element */
-    color: var(--secondary-color); 
-    padding: .5rem 0;         
+    font-size: 2rem;
+    /* Font size for the text element */
+    color: var(--secondary-color);
+    padding: .5rem 0;
 }
 
 
 .heading {
-    font-size: 4rem;          
-    padding: 1rem;            /* Padding around headings */
-    color: var(--secondary-color); 
-    text-transform: uppercase; 
+    font-size: 4rem;
+    padding: 1rem;
+    /* Padding around headings */
+    color: var(--secondary-color);
+    text-transform: uppercase;
 }
 
 .heading span {
-    color: var(--main-color); /* Apply main color to a span element within headings */
+    color: var(--main-color);
+    /* Apply main color to a span element within headings */
 }
 
 /* Home-page section end here */
@@ -287,10 +441,13 @@ section {
 
 /* Define a flex container for the row of elements in the "about" section */
 .about .row {
-    display: flex;              /* Flexbox to arrange child elements */
-    flex-wrap: wrap;            /* Wrap to the next row if there's not enough space */
-    gap: 2rem;                  
-    justify-content: center;    /* Horizontally center-align elements within the container */
+    display: flex;
+    /* Flexbox to arrange child elements */
+    flex-wrap: wrap;
+    /* Wrap to the next row if there's not enough space */
+    gap: 2rem;
+    justify-content: center;
+    /* Horizontally center-align elements within the container */
 }
 
 
@@ -303,52 +460,58 @@ section {
 
 /* Style for individual boxes within the container */
 .about .box-container .box {
-    display: flex;   
-    justify-content: space-evenly; 
-    text-align: center;         /* Center-align text within the box */
-    margin: 1.5rem 0;           /* Margin above and below the box */
-    background-color: var(--secondary-color); 
-    padding: 1rem;              
-    border-radius: 10px;      
-    height: 15rem;              
-    width: 10rem;               
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    /* Center-align text within the box */
+    margin: 1.5rem 0;
+    /* Margin above and below the box */
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 10px;
+    height: 15rem;
+    width: 10rem;
 }
 
 /* Style for the "span" element inside the box */
 .about .box-container .box span {
-    font-size: 1.5rem;          
-    color: white;               
-    transition: color 0.2s, transform 0.5s ease-in-out; /* Smooth transitions for color */
+    font-size: 1.5rem;
+    color: white;
+    transition: color 0.2s, transform 0.5s ease-in-out;
+    /* Smooth transitions for color */
 }
 
 /* Style for the heading (h3) inside the box */
 .about .box-container .box h3 {
-    font-size: 2rem;            
-    font-weight: normal;        
-    margin-top: 1.5rem;        
-    margin-bottom: 1rem;        
-    color: var(--main-color);   
-    transition: color 0.2s, transform 0.5s ease-in-out; /* Smooth transitions for color */
+    font-size: 2rem;
+    font-weight: normal;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--main-color);
+    transition: color 0.2s, transform 0.5s ease-in-out;
+    /* Smooth transitions for color */
 }
 
 /* Style for the paragraph (p) inside the box */
 .about .box-container .box p {
-    line-height: 1.5rem;        
-    font-size: 1.7rem;          
-    color: white;               
-    transition: color 0.2s, transform 0.5s ease-in-out; /* Smooth transitions for color */
+    line-height: 1.5rem;
+    font-size: 1.7rem;
+    color: white;
+    transition: color 0.2s, transform 0.5s ease-in-out;
+    /* Smooth transitions for color */
 }
 
 
 .about .box-container .box span,
 .about .box-container .box p {
-    transition: letter-spacing 0.1s ease-in-out; /* Apply smooth transition for letter-spacing property */
+    transition: letter-spacing 0.1s ease-in-out;
+    /* Apply smooth transition for letter-spacing property */
 }
 
 .about .box-container .box:hover span,
 .about .box-container .box:hover p {
-    letter-spacing: 0.1rem;     
-    color: var(--main-color);   
+    letter-spacing: 0.1rem;
+    color: var(--main-color);
 }
 
 /* about-me section end here  */
@@ -396,7 +559,7 @@ section {
     background-color: var(--secondary-color);
     color: #fff;
     border-radius: 2rem;
-    cursor:default;
+    cursor: default;
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
@@ -429,7 +592,7 @@ section {
 
 .skill .skills .progress .bar h3 {
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: space-between;
     font-size: 2.5rem;
     padding: 1rem 2rem;
@@ -502,7 +665,7 @@ section {
     margin: 2rem 0;
     perspective: 1000px;
     cursor: pointer;
-    
+
 }
 
 .box:hover {
@@ -516,15 +679,15 @@ section {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
-    align-items:center;
-    backface-visibility: hidden; 
+    justify-content: space-evenly;
+    align-items: center;
+    backface-visibility: hidden;
 }
 
 .box .front {
     background-color: var(--secondary-color);
     color: #fff;
-    transform: rotateY(0deg); 
+    transform: rotateY(0deg);
 }
 
 .box .back {
@@ -544,22 +707,26 @@ section {
 .box h3 {
     font-size: 1.8rem;
     text-transform: uppercase;
-    margin:0;
+    margin: 0;
     color: var(--main-color);
 }
+
 .box .icon {
     margin-top: 1rem;
     font-size: 4rem;
 }
 
-.box:hover .icon{
+.box:hover .icon {
     animation: bounce 0.75s ease-in-out infinite;
 }
 
 @keyframes bounce {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
+
     50% {
         transform: translateY(-10px);
     }
@@ -587,58 +754,58 @@ section {
 
 /* contact section starts here */
 
-.contact .icons-container{
+.contact .icons-container {
     display: flex;
-    gap:1.5rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
     padding-bottom: 2rem;
 }
 
-.contact .icons-container .icons{
+.contact .icons-container .icons {
     flex: 1 1 25rem;
     text-align: center;
     padding: 2rem;
-    background:var(--secondary-color);
+    background: var(--secondary-color);
     box-shadow: 0 .5rem 1rem black;
     border-radius: .5rem;
 }
 
-.contact .icons-container .icons i{
-    height:5rem;
-    width:5rem;
+.contact .icons-container .icons i {
+    height: 5rem;
+    width: 5rem;
     line-height: 5rem;
     font-size: 2rem;
     background: var(--main-color);
-    color:var(--secondary-color);
+    color: var(--secondary-color);
     border-radius: 50%;
 }
 
-.contact .icons-container .icons h3{
+.contact .icons-container .icons h3 {
     color: #fff;
     font-size: 2rem;
     padding: .5rem 0;
 }
 
-.contact .icons-container .icons p{
+.contact .icons-container .icons p {
     color: #fff;
     font-size: 1.7rem;
 }
 
-.contact .row{
+.contact .row {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
 }
 
-.contact .row form{
-    flex:1 1 55rem;
-    background:var(--secondary-color);
+.contact .row form {
+    flex: 1 1 55rem;
+    background: var(--secondary-color);
     padding: 0 2rem;
     box-shadow: 0 .5rem 1rem black;
     border-radius: .5rem;
 }
 
-.contact .row .map{
+.contact .row .map {
     flex: 1 1 25rem;
     border: 1rem solid #fff;
     box-shadow: 0 .5rem 1rem black;
@@ -647,10 +814,10 @@ section {
 }
 
 .contact .row form .box,
-.contact .row form textarea{
+.contact .row form textarea {
     width: 100%;
     border-bottom: .1rem solid var(--secondary-color);
-    color:var(--secondary-color);
+    color: var(--secondary-color);
     text-transform: none;
     font-size: 1.7 rem;
     padding: 1rem 0;
@@ -658,22 +825,22 @@ section {
 }
 
 .contact .row form .box:focus,
-.contact .row form textarea:focus{
+.contact .row form textarea:focus {
     background-origin: content-box;
     border-color: var(--main-color);
 }
 
 .contact .row form .box::placeholder,
-.contact .row form textarea::placeholder{
+.contact .row form textarea::placeholder {
     text-transform: capitalize;
 }
 
-.contact .row form textarea{
+.contact .row form textarea {
     height: 20rem;
     resize: none;
 }
 
-.contact .row form .btn{
+.contact .row form .btn {
     flex: 1 1 2rem;
     margin-top: 0;
     margin-bottom: 1.5rem;
@@ -682,20 +849,20 @@ section {
     color: var(--secondary-color);
     font-size: 2rem;
     width: 25rem;
-    }   
-    
-    .contact .row form .btn:hover{
-        background-color: var(--main-color);
-        color: var(--secondary-color);
-        letter-spacing: .1rem;
-    }
-    
-    
+}
 
-    .contact .row form input {
-        background-color: #fff;
-        height: 3.5rem;
-    }
+.contact .row form .btn:hover {
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    letter-spacing: .1rem;
+}
+
+
+
+.contact .row form input {
+    background-color: #fff;
+    height: 3.5rem;
+}
 
 
 
@@ -707,66 +874,68 @@ section {
 
 /* media queries  */
 
-@media (max-width:991px){
+@media (max-width:991px) {
 
-    html{
+    html {
         font-size: 55%;
     }
-    body{
+
+    body {
         padding: 0;
-}
-.about .box-container .box {
+    }
 
-    width: 100%; 
-    height: auto;
-    font-size: 1rem;
-}
+    .about .box-container .box {
 
-    #menu-bars{
+        width: 100%;
+        height: auto;
+        font-size: 1rem;
+    }
+
+    #menu-bars {
         display: initial;
-}
+    }
 
-    header{
+    header {
         left: -120%;
-}
+    }
 
-    header.active{
+    header.active {
         left: 0%;
     }
 
 }
 
-@media (max-width:450px){
+@media (max-width:450px) {
 
-    html{
-    font-size: 50%;
+    html {
+        font-size: 50%;
     }
 
-    header{
+    header {
         width: 100%;
     }
 
-    .home .image img{
-    height: auto;
-    width: 100%;
+    .home .image img {
+        height: auto;
+        width: 100%;
     }
 
     .about .box-container .box {
 
-        width: 100%; 
+        width: 100%;
         height: auto;
         font-size: 1rem;
     }
 
-    .heading span{
+    .heading span {
         font-size: 4rem;
     }
 
-    .about h3{
+    .about h3 {
         font-size: 2rem;
     }
 
-    .contact form .box{
+    .contact form .box {
         width: 100%;
     }
 }
