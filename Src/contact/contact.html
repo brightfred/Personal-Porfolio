@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Frederick Laroche Contact</title>
 </head>
+
 <body class="fade-in">
     <div id="menu-bars" class="fa-solid fa-circle-chevron-down"></div>
     <header>
@@ -20,13 +22,7 @@
             <div class="search">
                 <input type="text" class="searchTerm" placeholder="Search">
                 <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-                </button>
-            </div>
-            <div class="filter">
-                <input type="text" class="filterTerm" placeholder="Filter">
-                <button type="button" class="filterButton">
-                    <i class="fa fa-filter"></i>
+                    <i class="fa fa-search"></i>
                 </button>
             </div>
             <a href="/Src/login/login.html" id="showLoginModal" class="login-link" title="Login">
@@ -35,19 +31,22 @@
             </a>
         </nav>
         <div class="follow">
-            <a href="https://github.com/Brightfred" target="_blank" class="fab fa-github-alt" title="GitHub profile"></a>
-            <a href="https://www.linkedin.com/in/frederick-laroche?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz69hEHAXQhyQKw3iSJG8iQ%3D%3D" target="_blank" class="fab fa-linkedin" title="LinkedIn"></a>
-            <a href="mailto:frederick-laroche@live.nmit.ac.nz" target="_blank" class="fa-regular fa-envelope" title="Email Link"></a>
+            <a href="https://github.com/Brightfred" target="_blank" class="fab fa-github-alt"
+                title="GitHub profile"></a>
+            <a href="https://www.linkedin.com/in/frederick-laroche?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz69hEHAXQhyQKw3iSJG8iQ%3D%3D"
+                target="_blank" class="fab fa-linkedin" title="LinkedIn"></a>
+            <a href="mailto:frederick-laroche@live.nmit.ac.nz" target="_blank" class="fa-regular fa-envelope"
+                title="Email Link"></a>
         </div>
     </header>
 
     <section class="contact" id="contact">
         <h2 class="heading"> Contact <span> me </span></h2>
-            <div class="icons-container">
-                <div class="icons">
-                    <a href="mailto:frederick-laroche@live.nmit.ac.nz" target="_blank" title="Email Link">
-                        <i class="fa-solid fa-envelope"></i>
-                    </a>
+        <div class="icons-container">
+            <div class="icons">
+                <a href="mailto:frederick-laroche@live.nmit.ac.nz" target="_blank" title="Email Link">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
                 <h3> Email</h3>
                 <p>Frederick-laroche@live.nmit.ac.nz</p>
             </div>
@@ -63,27 +62,41 @@
             <div class="icons">
                 <i class="fa-solid fa-location-dot"></i>
                 <h3> Address</h3>
-                <p>Nelson,New zealand</p>
+                <p>Nelson , New zealand</p>
             </div>
         </div>
 
         <div class="row">
-            <form action="">
-                <input type="text" placeholder="name" class="box">
-                <input type="email" placeholder="email" class="box">
-                <input type="number" placeholder="number" class="box">
-
-                <textarea name="textearea" placeholder="Write your message" id="textearea" cols="30" rows="10"></textarea>
-
+            <form id="contact-form">
+                <input type="text" id="contact-name" placeholder="name" class="box" required>
+                <input type="email" id="contact-email" placeholder="email" class="box" required>
+                <input type="number" id="contact-number" placeholder="number" class="box">
+                <textarea name="textarea" id="contact-message" placeholder="Write your message" cols="30" rows="10"
+                    maxlength="500" required></textarea>
                 <input type="submit" class="btn" value="Send message">
-
             </form>
 
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d191841.43009168596!2d173.313009!3d-41.297499!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d3becc491b72e7d%3A0xa00ef88e796a480!2sNelson!5e0!3m2!1sfr!2snz!4v1693273785899!5m2!1sfr!2snz"allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d191841.43009168596!2d173.313009!3d-41.297499!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d3becc491b72e7d%3A0xa00ef88e796a480!2sNelson!5e0!3m2!1sfr!2snz!4v1693273785899!5m2!1sfr!2snz"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
-    </section>
-    <script src="contact.js"></script>
+
+        <div id="messageBox" class="message-box hidden">
+            <p id="messageText"></p>
+            <button id="closeMessage">Close</button>
+        </div>
+
+        <!-- Load external libraries first -->
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
+        
+
+        <!-- Then load scripts -->
+        <script type="module" src="/Src/firebaseSDks.js"></script>
+        <script type="module" src="contact.js"></script>
+
 </body>
 
 </html>

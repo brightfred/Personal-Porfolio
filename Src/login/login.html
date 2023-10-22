@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    
+    <!-- Meta Information -->
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Stylesheets -->
+    
     <link rel="stylesheet" type="text/css" href="../main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Page Title -->
+    
     <title>Frederick Laroche Login</title>
 </head>
 
 <body class="fade-in">
-
+    
+    <!-- Menu Icon -->
+    
     <div id="menu-bars" class="fa-solid fa-circle-chevron-down"></div>
 
+    <!-- Header Section -->
+    
     <header>
+        <!-- Logo -->
         <a href="#home" class="logo"><span>Frederick </span>Laroche</a>
 
+        
+        <!-- Navigation Bar -->
+        
         <nav class="navbar">
+            
+            <!-- Navigation Links -->
+            
             <a href="../home-page/home-page.html">Home</a>
             <a href="../about-me/about-me.html">About Me</a>
             <a href="../skill/skill.html">Skill</a>
             <a href="../project/project.html">Project</a>
             <a href="../contact/contact.html">Contact</a>
+
+            <!-- Search Bar -->
+            
             <div class="search">
                 <input type="text" class="searchTerm" placeholder="Search">
                 <button type="submit" class="searchButton">
@@ -29,12 +51,16 @@
                 </button>
             </div>
 
+            <!-- Login Link -->
+            
             <a href="/Src/login/login.html" id="showLoginModal" class="login-link" title="Login">
                 <span class="fa-solid fa-user"></span>
                 Login
             </a>
         </nav>
 
+        <!-- Social Media Links -->
+        
         <div class="follow">
             <a href="https://github.com/Brightfred" target="_blank" class="fab fa-github-alt"
                 title="GitHub profile"></a>
@@ -45,49 +71,97 @@
         </div>
     </header>
 
+    <!-- Login Section -->
+    
     <section class="login-section">
+        
+        <!-- Login Form -->
+        
         <div>
             <h2>Login</h2>
             <form id="login-form">
+                
+                <!-- Email Input -->
+                
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required autocomplete="username">
                 <br>
+                
+                <!-- Password Input -->
+                
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" required autocomplete="current-password">
                 <br>
+                
+                <!-- Submit Button -->
+                
                 <input type="submit" value="Login">
+                
+                <!-- Forgot Password Link -->
+                
+                <p><a href="#" id="forgot-password">Forgot Password?</a></p>
+                
+                <!-- Register Link -->
+                
+
+            </form>
                 <p>Don't have an account? <button id="show-register-modal">Register</button></p>
-                <!-- Added buttons for Google, Facebook, and GitHub login -->
+                
+                <!-- Social Media Login Buttons -->
+                
                 <button id="login-with-google"><i class="fab fa-google"></i>Google</button>
                 <button id="login-with-facebook"><i class="fab fa-facebook-f"></i>Facebook</button>
                 <button id="login-with-github"><i class="fab fa-github"></i>GitHub</button>
-            </form>
+
         </div>
 
-        <!-- Register Modal -->
+        <!-- Registration Modal -->
+        
         <div id="register-modal">
             <div class="modal-content">
+
+                <!-- Close Button -->
+                
                 <span class="close-btn" id="close-register-modal">&times;</span>
+                
+                <!-- Registration Form -->
+                
                 <h2>Register</h2>
                 <form id="registration-form">
+                    
+                    <!-- Email Input -->
+                    
                     <label for="register-email">Email:</label>
-                    <input type="email" id="register-email" name="register-email" required>
+                    <input type="email" id="modal-email" name="email" required autocomplete="username">
                     <br>
+                    
+                    <!-- Password Input -->
+                    
                     <label for="register-password">Password:</label>
-                    <input type="password" id="register-password" name="register-password" required>
+                    <input type="password" id="register-password" name="register-password" required autocomplete="new-password">
                     <br>
+                    
+                    <!-- Confirm Password Input -->
+                    
                     <label for="confirm-password">Confirm Password:</label>
-                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <input type="password" id="confirm-password" name="confirm-password" required autocomplete="new-password">
                     <br>
+                    
+                    <!-- Submit Button -->
+                    
                     <input type="submit" value="Register">
                 </form>
             </div>
         </div>
 
         <!-- Firebase SDKs -->
+        
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
     </section>
+
+    <!-- JavaScript -->
+    
     <script type="module" src="/Src/firebaseSDks.js"></script>
 </body>
 
