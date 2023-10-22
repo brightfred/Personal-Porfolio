@@ -178,8 +178,7 @@ header .follow a:hover {
 }
 
 /* Styles for search and filter containers */
-.search,
-.filter {
+.search {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -189,8 +188,7 @@ header .follow a:hover {
 }
 
 /* Styles for the search input field and filter input field */
-.searchTerm,
-.filterTerm {
+.searchTerm {
     width: 50%;
     padding: 5px;
     height: 27px;
@@ -198,14 +196,12 @@ header .follow a:hover {
     color: var(--main-color);
 }
 
-.searchTerm:focus,
-.filterTerm:focus {
+.searchTerm:focus {
     color: var(--secondary-color);
 }
 
 /* Styles for the search button and filter button */
-.searchButton,
-.filterButton {
+.searchButton {
     width: 2.6rem;
     height: 2.3rem;
     background: var(--secondary-color);
@@ -217,8 +213,7 @@ header .follow a:hover {
 }
 
 /* Styling for the search button and filter button when hovered */
-.searchButton:hover,
-.filterButton:hover {
+.searchButton:hover {
     color: var(--main-color);
     transform: scale(1.20);
 }
@@ -297,13 +292,13 @@ section {
     color: #fff;
 }
 
-.login-section #forgot-password{
+.login-section #forgot-password {
     color: #fff;
     font-style: italic;
     text-decoration: underline;
 }
 
-.login-section #forgot-password:hover{
+.login-section #forgot-password:hover {
     color: var(--main-color);
     cursor: pointer;
 }
@@ -448,79 +443,87 @@ section {
 
 /* About-me section start here  */
 
-/* Define a flex container for the row of elements in the "about" section */
-.about .row {
+
+
+.about {
     display: flex;
-    /* Flexbox to arrange child elements */
-    flex-wrap: wrap;
-    /* Wrap to the next row if there's not enough space */
-    gap: 2rem;
-    justify-content: center;
-    /* Horizontally center-align elements within the container */
+    flex-direction: column;
+    align-items: center;
 }
 
-
-/* Flex container for the boxes inside the "about" section */
-/* Basis: 50% of the container width minus 1.5rem  */
-.about .box-container {
-    flex: 1 1 calc(50% - 1.5rem);
+.about .edu-exp {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
 }
 
-
-/* Style for individual boxes within the container */
-.about .box-container .box {
-    display: flex;
-    justify-content: space-evenly;
+.about .edu-exp .heading {
+    font-size: 48px;
+    margin-bottom: 30px;
     text-align: center;
-    /* Center-align text within the box */
-    margin: 1.5rem 0;
-    /* Margin above and below the box */
+    color: var(--main-color);
+    font-weight: 700;
+}
+
+.about .edu-exp .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 30px;
+}
+
+.about .edu-exp .box-container {
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* Ensures equal height for all boxes */
+}
+
+.about .edu-exp .box {
     background-color: var(--secondary-color);
-    padding: 1rem;
+    padding: 20px;
     border-radius: 10px;
-    height: 15rem;
-    width: 10rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 100%;
+    /* Takes the full width of its container */
+    height: 100%;
+    /* Takes the full height of its grid row */
 }
 
-/* Style for the "span" element inside the box */
-.about .box-container .box span {
+.about .edu-exp .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.about .edu-exp .box span,
+.about .edu-exp .box h3,
+.about .edu-exp .box p {
+    color: #fff;
+    margin: 0;
+}
+
+.about .edu-exp .box span {
     font-size: 1.5rem;
-    color: white;
-    transition: color 0.2s, transform 0.5s ease-in-out;
-    /* Smooth transitions for color */
-}
-
-/* Style for the heading (h3) inside the box */
-.about .box-container .box h3 {
-    font-size: 2rem;
-    font-weight: normal;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
     color: var(--main-color);
-    transition: color 0.2s, transform 0.5s ease-in-out;
-    /* Smooth transitions for color */
+    margin-bottom: 10px;
 }
 
-/* Style for the paragraph (p) inside the box */
-.about .box-container .box p {
-    line-height: 1.5rem;
-    font-size: 1.7rem;
-    color: white;
-    transition: color 0.2s, transform 0.5s ease-in-out;
-    /* Smooth transitions for color */
+.about .edu-exp .box h3 {
+    font-size: 24px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 
-
-.about .box-container .box span,
-.about .box-container .box p {
-    transition: letter-spacing 0.1s ease-in-out;
-    /* Apply smooth transition for letter-spacing property */
-}
-
-.about .box-container .box:hover span,
-.about .box-container .box:hover p {
-    letter-spacing: 0.1rem;
-    color: var(--main-color);
+.about .edu-exp .box p {
+    margin-top: 10px;
+    line-height: 1.6;
+    font-size: 16px;
+    flex-grow: 1;
 }
 
 /* about-me section end here  */
@@ -652,13 +655,13 @@ section {
 
 /* project section starts here  */
 
-.box-container {
+.project .project-box-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
 }
 
-.box {
+.project .project-box {
     flex: 1 1 30rem;
     height: 23rem;
     position: relative;
@@ -677,12 +680,12 @@ section {
 
 }
 
-.box:hover {
+.project .project-box:hover {
     transform: scale(1.05);
 }
 
-.box .front,
-.box .back {
+.project .project-box .front,
+.project .project-box .back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -693,13 +696,13 @@ section {
     backface-visibility: hidden;
 }
 
-.box .front {
+.project .project-box .front {
     background-color: var(--secondary-color);
     color: #fff;
     transform: rotateY(0deg);
 }
 
-.box .back {
+.project .project-box .back {
     background-color: var(--secondary-color);
     color: #fff;
     transform: rotateY(180deg);
@@ -707,25 +710,25 @@ section {
     backface-visibility: visible;
 }
 
-.box .back p {
+.project .project-box .back p {
     font-size: 2rem;
     color: #fff;
 }
 
 
-.box h3 {
+.project .project-box h3 {
     font-size: 1.8rem;
     text-transform: uppercase;
     margin: 0;
     color: var(--main-color);
 }
 
-.box .icon {
+.project .project-box .icon {
     margin-top: 1rem;
     font-size: 4rem;
 }
 
-.box:hover .icon {
+.project .project-box:hover .icon {
     animation: bounce 0.75s ease-in-out infinite;
 }
 
@@ -743,17 +746,17 @@ section {
 
 
 
-.box.flipped .back {
+.project .project-box.flipped .back {
     display: flex;
 }
 
-.box.flipped {
+.project .project-box.flipped {
     transform: rotateY(180deg);
 }
 
 
 
-.project .box-container .box.flipped {
+.project .project-box-container .project-box.flipped {
     transform: rotateY(180deg);
 }
 
@@ -790,7 +793,7 @@ section {
     cursor: pointer;
 }
 
-.contact .icons-container .icons i:hover{
+.contact .icons-container .icons i:hover {
     background-color: var(--main-color);
     color: var(--secondary-color);
     transform: scale(1.05);
@@ -826,13 +829,15 @@ section {
     border: 1rem solid #fff;
     box-shadow: 0 .5rem 1rem black;
     width: 100%;
-    height: 420px; /* Set a specific height for the map container */
+    height: 420px;
+    /* Set a specific height for the map container */
     border-radius: .5rem;
 }
 
 .contact .map iframe {
     width: 100%;
-    height: 100%; /* Ensure the iframe takes up the full height of its container */
+    height: 100%;
+    /* Ensure the iframe takes up the full height of its container */
 }
 
 
@@ -866,7 +871,7 @@ section {
 }
 
 #contact-message {
-border-radius: 10px;
+    border-radius: 10px;
 }
 
 
@@ -896,24 +901,53 @@ border-radius: 10px;
 }
 
 .message-box {
-    background-color: #f44336; /* Red background */
-    color: white; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 8px; /* Rounded corners */
-    padding: 16px; /* Padding */
-    position: fixed; /* Fixed position */
-    z-index: 1; /* Sit on top */
-    left: 50%; /* Center the box */
-    top: 30px; /* 30px from the top */
-    transform: translate(-50%, 0); /* Adjust for center alignment */
-    max-width: 300px; /* Maximum width */
-    width: 80%; /* Full width */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 16px;
+    position: fixed;
+    z-index: 10000;
+    left: 50%;
+    top: 30px;
+    transform: translate(-50%, 0);
+    max-width: 300px;
+    width: 80%;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
 }
 
+/* Styles for Hover Effect on Message Boxes */
+.message-box:hover {
+    transform: translate(-50%, 0) scale(1.05);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for Buttons */
+.button,
+#closeMessage {
+    padding: 10px 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin: 5px;
+    font-weight: bold;
+}
+
+/* Styles for Hover Effect on Buttons */
+.button:hover,
+#closeMessage:hover {
+    color: var(--main-color);
+    transform: scale(1.05);
+}
+
+/* Styles for Hidden Class */
 .hidden {
-    display: none; /* Hide the box */
+    display: none;
 }
-
 
 /* contact section ends here */
 
@@ -932,11 +966,17 @@ border-radius: 10px;
         padding: 0;
     }
 
-    .about .box-container .box {
+    .box-container .box {
 
         width: 100%;
         height: auto;
         font-size: 1rem;
+    }
+
+    .about .edu-exp .row,
+    .about .edu-exp .box-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
     }
 
     #menu-bars {
@@ -951,30 +991,34 @@ border-radius: 10px;
         left: 0%;
     }
 
+    .login-section div {
+        width: 80%;
+        /* Adjust width */
+        padding: 2rem;
+        /* Adjust padding */
+    }
+
+    .login-section .modal-content {
+        width: 80%;
+        /* Adjust width */
+    }
+
+
 }
 
 @media (max-width:450px) {
-
     html {
         font-size: 50%;
     }
 
-    header {
+    header,
+    .home .image img,
+    .about .box-container .box,
+    .contact form .box {
         width: 100%;
     }
 
-    .home .image img {
-        height: auto;
-        width: 100%;
-    }
-
-    .about .box-container .box {
-
-        width: 100%;
-        height: auto;
-        font-size: 1rem;
-    }
-
+    
     .heading span {
         font-size: 4rem;
     }
@@ -983,7 +1027,10 @@ border-radius: 10px;
         font-size: 2rem;
     }
 
-    .contact form .box {
-        width: 100%;
+    .login-section {
+        height: 100vh;
+        flex-direction: column;
+
     }
+
 }

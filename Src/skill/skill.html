@@ -27,12 +27,6 @@
                     <i class="fa fa-search"></i>
                 </button>
             </div>
-            <div class="filter">
-                <input type="text" class="filterTerm" placeholder="Filter">
-                <button type="button" class="filterButton">
-                    <i class="fa fa-filter"></i>
-                </button>
-            </div>
             <a href="/Src/login/login.html" id="showLoginModal" class="login-link" title="Login">
                 <span class="fa-solid fa-user"></span>
                 Login
@@ -77,9 +71,19 @@
                 <li>Adaptability</li>
             </ul>
         </div>
+        <div id="messageBox" class="message-box hidden">
+            <div id="messageContent">
+                <p id="messageText"></p>
+            </div>
+            <button id="closeMessage">Close</button>
+        </div>
+        <!-- Firebase SDKs -->
+        
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+        <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
     </section>
-    <script src="/Src/firebaseSDks.js"></script>
-    <script src="skill.js"></script>
+    <script type="module" src="/Src/firebaseSDks.js"></script>
+    <script type="module" src="skill.js"></script>
 </body>
 
 </html>

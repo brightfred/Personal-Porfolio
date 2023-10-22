@@ -87,15 +87,16 @@
             <p id="messageText"></p>
             <button id="closeMessage">Close</button>
         </div>
-
-        <!-- Load external libraries first -->
+        
+        <!-- Firebase SDKs -->
+        
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
-        
+    </section>
 
         <!-- Then load scripts -->
-        <script type="module" src="/Src/firebaseSDks.js"></script>
-        <script type="module" src="contact.js"></script>
+        <script type="module" src="/Src/firebaseSDks.js" defer></script>
+        <script type="module" src="contact.js" defer></script>
 
 </body>
 
