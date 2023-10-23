@@ -45,7 +45,7 @@
             <!-- Search Bar -->
             
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search">
+                <input type="text" class="searchTerm" placeholder="Search" id="searchInput">
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search"></i>
                 </button>
@@ -77,7 +77,7 @@
         
         <!-- Login Form -->
         
-        <div>
+        <div id="login">
             <h2>Login</h2>
             <form id="login-form">
                 
@@ -157,7 +157,6 @@
             <p id="messageText"></p>
             <button id="closeMessage">Close</button>
         </div>
-        <!-- <i class="fa-regular fa-circle-xmark"></i> -->
         <!-- Forgot Password Box -->
         <div id="forgotPasswordBox" class="message-box hidden">
             <p>Please enter your email address:</p>
@@ -165,6 +164,8 @@
             <button id="submitButton">Submit</button>
             <button id="closeForgotPassword">Close</button>
         </div>
+        <div id="resultsContainer"></div>
+
         <!-- Firebase SDKs -->
         
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>

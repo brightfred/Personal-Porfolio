@@ -20,10 +20,11 @@
             <a href="../project/project.html">Project</a>
             <a href="../contact/contact.html">Contact</a>
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search">
+                <input type="text" class="searchTerm" placeholder="Search" id="searchInput">
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search"></i>
                 </button>
+            </div>
             </div>
             <a href="/Src/login/login.html" id="showLoginModal" class="login-link" title="Login">
                 <span class="fa-solid fa-user"></span>
@@ -87,7 +88,7 @@
             <p id="messageText"></p>
             <button id="closeMessage">Close</button>
         </div>
-        
+        <div id="resultsContainer"></div>
         <!-- Firebase SDKs -->
         
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>

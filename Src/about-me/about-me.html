@@ -21,7 +21,7 @@
             <a href="../contact/contact.html">Contact</a>
 
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search">
+                <input type="text" class="searchTerm" placeholder="Search" id="searchInput">
                 <button type="submit" class="searchButton">
                     <i class="fa fa-search"></i>
                 </button>
@@ -47,38 +47,38 @@
         <div class="edu-exp">
             <h1 class="heading"> About <span> Me</span></h1>
             <div class="row">
-                <div class="box-container">
-                    <div class="box">
+                <div class="diploma-box-container">
+                    <div class="diploma-box">
                         <span>(2023-2026)</span>
                         <h3>Diploma: Information Technology</h3>
                         <p>I pursued a diploma in Information Technology at NMIT, New Zealand. Preparing me for new
                             challenges and opportunities.</p>
                     </div>
-                    <div class="box">
+                    <div class="diploma-box">
                         <span>(2015-2017)</span>
                         <h3>Diploma:Business Management</h3>
                         <p>Pursed in Canada,this program equipped me with business and financial knowledge .</p>
                     </div>
-                    <div class="box">
+                    <div class="diploma-box">
                         <span>(2011-2014)</span>
                         <h3>Diploma: Fire Science </h3>
                         <p>I undertook a Diploma in Fire Science, where I gained essential insights into fire safety and
                             emergency management.</p>
                     </div>
                 </div>
-                <div class="box-container">
-                    <div class="box">
+                <div class="exp-box-container">
+                    <div class="exp-box">
                         <span>(2023-2026)</span>
                         <h3>Web developer</h3>
                         <p>I focused on becoming a skilled web developer. This period marked my exploration of coding,
                             honing expertise in HTML, CSS, JavaScript, and beyond.</p>
                     </div>
-                    <div class="box">
+                    <div class="exp-box">
                         <span>(2015-2022)</span>
                         <h3>Agricultural Accounting and Management</h3>
                         <p>Honing financial acumen and strategic insights within the dynamic agricultural sector.</p>
                     </div>
-                    <div class="box">
+                    <div class="exp-box">
                         <span>(2014-2019)</span>
                         <h3>Firefighter</h3>
                         <p>Explored firefighting, nurturing resilience and teamwork. Gained crisis management skills
@@ -93,6 +93,8 @@
             </div>
             <button id="closeMessage">Close</button>
         </div>
+
+        <div id="resultsContainer"></div>
         <!-- Firebase SDKs -->
         
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>

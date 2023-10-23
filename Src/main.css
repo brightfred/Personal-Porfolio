@@ -235,7 +235,7 @@ section {
     background-color: #fff;
 }
 
-.login-section div {
+.login-section #login {
     background-color: var(--secondary-color);
     padding: 30px;
     border-radius: 8px;
@@ -474,16 +474,18 @@ section {
     gap: 30px;
 }
 
-.about .edu-exp .box-container {
+.about .edu-exp .exp-box-container,
+.about .edu-exp .diploma-box-container {
     display: grid;
     gap: 20px;
     grid-template-rows: 1fr 1fr 1fr;
     /* Ensures equal height for all boxes */
 }
 
-.about .edu-exp .box {
+.about .edu-exp .diploma-box,
+.about .edu-exp .exp-box {
     background-color: var(--secondary-color);
-    padding: 20px;
+    padding: 5px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -493,33 +495,40 @@ section {
     /* Takes the full height of its grid row */
 }
 
-.about .edu-exp .box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.about .edu-exp .diploma-box:hover,
+.about .edu-exp .exp-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 1);
 }
 
 
-.about .edu-exp .box span,
-.about .edu-exp .box h3,
-.about .edu-exp .box p {
+.about .edu-exp .diploma-box span,
+.about .edu-exp .diploma-box h3,
+.about .edu-exp .diploma-box p,
+.about .edu-exp .exp-box span,
+.about .edu-exp .exp-box h3,
+.about .edu-exp .exp-box p {
     color: #fff;
     margin: 0;
 }
 
-.about .edu-exp .box span {
+.about .edu-exp .diploma-box span,
+.about .edu-exp .exp-box span {
     font-size: 1.5rem;
     color: var(--main-color);
     margin-bottom: 10px;
 }
 
-.about .edu-exp .box h3 {
+.about .edu-exp .diploma-box h3,
+.about .edu-exp .exp-box h3 {
     font-size: 24px;
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 600;
 }
 
-.about .edu-exp .box p {
+.about .edu-exp .diploma-box p,
+.about .edu-exp .exp-box p {
     margin-top: 10px;
     line-height: 1.6;
     font-size: 16px;
@@ -900,6 +909,11 @@ section {
     height: 3.5rem;
 }
 
+.message-box p {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
 .message-box {
     background-color: #fff;
     border-radius: 10px;
@@ -913,7 +927,7 @@ section {
     width: 80%;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
+    border: #301934 solid 2px;
 }
 
 /* Styles for Hover Effect on Message Boxes */
@@ -923,23 +937,45 @@ section {
 }
 
 /* Styles for Buttons */
-.button,
+
 #closeMessage {
-    padding: 10px 10px;
-    border: none;
+    width: 60px;
+    padding: 5px 5px;
+    border: #301934 solid 2px;
     border-radius: 10px;
-    background-color: #fff;
-    color: var(--secondary-color);
+    background-color: var(--secondary-color);
+    color: #fff;
     font-size: 1.3rem;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    margin: 5px;
+    margin: 10px;
     font-weight: bold;
 }
 
-/* Styles for Hover Effect on Buttons */
-.button:hover,
+.confirm-yes,
+.confirm-no {
+    width: 60px;
+    padding: 5px 5px;
+    border: #301934 solid 2px;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin: 10px;
+    font-weight: bold;
+}
+
+/* Styles for Hover Effect on close message Button */
+
 #closeMessage:hover {
+    color: var(--main-color);
+    transform: scale(1.05);
+}
+
+.confirm-yes:hover,
+.confirm-no:hover {
     color: var(--main-color);
     transform: scale(1.05);
 }
@@ -947,6 +983,18 @@ section {
 /* Styles for Hidden Class */
 .hidden {
     display: none;
+}
+
+#resultsContainer {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+.result {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
 }
 
 /* contact section ends here */
@@ -1018,7 +1066,7 @@ section {
         width: 100%;
     }
 
-    
+
     .heading span {
         font-size: 4rem;
     }
