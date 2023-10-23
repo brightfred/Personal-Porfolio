@@ -13,25 +13,37 @@
 <body class="fade-in">
     <div id="menu-bars" class="fa-solid fa-circle-chevron-down"></div>
     <header>
-        <a href="../home-page/home-page.html" class="logo"><span>Frederick </span>Laroche</a>
+        <a href="#home" class="logo"><span>Frederick </span>Laroche</a>
+
         <nav class="navbar">
             <a href="../home-page/home-page.html">Home</a>
             <a href="../about-me/about-me.html">About Me</a>
             <a href="../skill/skill.html">Skill</a>
             <a href="../project/project.html">Project</a>
             <a href="../contact/contact.html">Contact</a>
+            
+            
+            <div class="dropdown">
             <div class="search">
                 <input type="text" class="searchTerm" placeholder="Search" id="searchInput">
                 <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>
+                    <i class="fa fa-search"></i>    
                 </button>
             </div>
+            </div>
+
+
+            <div id="suggestionsContainer" class="suggestions-container"></div>
+
+
             <a href="/Src/login/login.html" id="showLoginModal" class="login-link" title="Login">
                 <span class="fa-solid fa-user"></span>
                 Login
             </a>
         </nav>
+            <div id="resultsContainer"></div>
         <div class="follow">
+
             <a href="https://github.com/Brightfred" target="_blank" class="fab fa-github-alt"
                 title="GitHub profile"></a>
             <a href="https://www.linkedin.com/in/frederick-laroche?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bz69hEHAXQhyQKw3iSJG8iQ%3D%3D"

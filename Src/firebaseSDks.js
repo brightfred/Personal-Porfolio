@@ -235,7 +235,7 @@ auth.onAuthStateChanged(user => {
             loginLink.href = '#';
             loginLink.title = 'Log Out';
 
-            loginLink.addEventListener('click', function(event) {
+            loginLink.addEventListener('click', function (event) {
                 event.preventDefault();
                 showLogoutConfirmation();
             });
@@ -272,11 +272,11 @@ function showLogoutConfirmation() {
     messageBox.appendChild(confirmNo);
     messageBox.classList.remove('hidden');
 
-    confirmYes.addEventListener('click', function() {
+    confirmYes.addEventListener('click', function () {
         logoutUser();
     });
 
-    confirmNo.addEventListener('click', function() {
+    confirmNo.addEventListener('click', function () {
         messageBox.classList.add('hidden');
         removeExistingButtons();
     });
@@ -342,19 +342,53 @@ if (loginForm) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', (event) => {
+
+
+// Search functionality
+
+
+// Function to initialize event listeners once DOM is loaded
+function initialize() {
     const searchButton = document.querySelector('.searchButton');
     const searchInput = document.getElementById('searchInput');
-    const tagDropdown = document.getElementById('tagDropdown');  // Assume tagDropdown is the id of your dropdown menu
-
+    // Event listener for input to trigger autocomplete
+    searchInput.addEventListener('input', executeAutocomplete);  // Add listener for autocomplete
+    // Event listener for button click
     searchButton.addEventListener('click', executeSearch);
+
+    // Event listener for 'Enter' key in input field
     searchInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter') {
             executeSearch();
         }
     });
-    searchInput.addEventListener('input', executeAutocomplete);  // Add listener for autocomplete
+}
+
+// Function to populate the tags dropdown
+function populateTagsDropdown() {
+    const tagDropdown = document.getElementById('tagDropdown');
+    tagsArray.forEach(tag => {
+        const option = document.createElement('option');
+        option.value = tag.toLowerCase();
+        option.textContent = tag;
+        tagDropdown.appendChild(option);
+    });
+}
+
+
+
+// Event listener for autocomplete suggestions click
+document.getElementById('suggestionsContainer').addEventListener('click', function (event) {
+    const selectedSuggestion = event.target.textContent;
+    document.getElementById('searchInput').value = selectedSuggestion;
+    executeSearch();
 });
+
+
+
+
+// Call initialize function once DOM is loaded
+document.addEventListener('DOMContentLoaded', initialize);
 
 // Function to index a page
 function indexPage(pageData) {
@@ -369,7 +403,7 @@ function indexPage(pageData) {
 }
 
 // Call indexPage on page load or content update with the necessary page data
-// Repeat for each page you want to index
+
 const pagesData = [
     {
         title: "About-Me",
@@ -412,43 +446,50 @@ const pagesData = [
 pagesData.forEach(pageData => indexPage(pageData));
 
 // Function to execute a search
-function executeSearch() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const selectedTag = document.getElementById('tagDropdown').value.toLowerCase();
+// Function to execute a search
+function executeSearch(searchTermOverride) {
+    const searchTerm = searchTermOverride || document.getElementById('searchInput').value;
     const pagesCollection = collection(firestore, 'pages');
-
+    const selectedTagDropdown = document.getElementById('selectedTagDropdown');
+    const selectedTag = selectedTagDropdown ? selectedTagDropdown.value : null;
     let q;
     if (selectedTag) {
         // If a tag is selected, filter by both search term and tag
-        q = query(pagesCollection, where('tags_lowercase', 'array-contains', searchTerm), where('tags_lowercase', 'array-contains', selectedTag));
+        q = query(
+            pagesCollection,
+            where('tags', 'array-contains', searchTerm),
+            where('tags', 'array-contains', selectedTag)
+        );
     } else {
         // If no tag is selected, filter by search term only
-        q = query(pagesCollection, where('tags_lowercase', 'array-contains', searchTerm));
+        q = query(pagesCollection, where('tags', 'array-contains', searchTerm));
     }
 
     getDocs(q)
-    .then((querySnapshot) => {
-        let results = [];
-        querySnapshot.forEach((doc) => {
-            results.push(doc.data());
+        .then((querySnapshot) => {
+            let results = [];
+            querySnapshot.forEach((doc) => {
+                results.push(doc.data());
+            });
+
+            // If a tag is selected, filter the results
+            if (selectedTag) {
+                results = results.filter(result => result.tags.includes(selectedTag));
+            }
+
+            if (results.length > 0) {
+                displayResults(results);
+            } else {
+                noResultsFeedback();
+            }
+        })
+        .catch((error) => {
+            console.error("Error getting documents: ", error);
+            errorFeedback();
         });
-
-        // If a tag is selected, filter the results
-        if (selectedTag) {
-            results = results.filter(result => result.tags_lowercase.includes(selectedTag));
-        }
-
-        if (results.length > 0) {
-            displayResults(results);
-        } else {
-            noResultsFeedback();
-        }
-    })
-    .catch((error) => {
-        console.error("Error getting documents: ", error);
-        errorFeedback();
-    });
 }
+
+
 // Function to display search results
 function displayResults(results) {
     const resultsContainer = document.getElementById('resultsContainer');
@@ -478,39 +519,53 @@ function errorFeedback() {
     resultsContainer.innerHTML = '<p>An error occurred while searching. Please try again.</p>';
 }
 
-// Function to fetch and display autocomplete suggestions
 function executeAutocomplete() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    // Fetch suggestions based on searchTerm
-    // This is a simplified example and may not work for your specific setup
-    const pagesCollection = collection(firestore, 'pages');
-    const q = query(pagesCollection, where('tags_lowercase', 'array-contains', searchTerm));
-    getDocs(q)
-        .then((querySnapshot) => {
-            const suggestions = [];
-            querySnapshot.forEach((doc) => {
-                suggestions.push(...doc.data().tags);
-            });
-            displaySuggestions(suggestions);
-        })
-        .catch((error) => {
-            console.error("Error getting documents: ", error);
-        });
-}
+    const tagsArray = [
+        "Education",
+        "Web Developer",
+        "Agriculture",
+        "Finance",
+        "Experience",
+        "Diploma",
+        "login",
+        "account",
+        "projects",
+        "HTML",
+        "Email",
+        "Message",
+        "soft skills",
+        "technical skills",
+        "CSS",
 
-// Function to display autocomplete suggestions
-function displaySuggestions(suggestions) {
+    ];
+
+    const searchTerm = document.getElementById('searchInput').value;
     const suggestionsContainer = document.getElementById('suggestionsContainer');
     suggestionsContainer.innerHTML = '';
-    suggestions.forEach(suggestion => {
-        const suggestionItem = document.createElement('div');
-        suggestionItem.textContent = suggestion;
-        suggestionsContainer.appendChild(suggestionItem);
-    });
+    
+    if (searchTerm) {
+        let hasSuggestions = false;
+        tagsArray.forEach(tag => {
+            if (tag.toLowerCase().includes(searchTerm.toLowerCase())) {
+                hasSuggestions = true;
+                const suggestionItem = document.createElement('div');
+                suggestionItem.textContent = tag;
+                suggestionItem.addEventListener('click', function() {
+                    document.getElementById('searchInput').value = tag; // Set the search input to the clicked tag
+                    executeSearch(tag); // Execute search with the clicked tag
+                    suggestionsContainer.style.display = 'none'; // Hide suggestions when one is clicked
+                });
+                suggestionsContainer.appendChild(suggestionItem);
+            }
+        });
+        suggestionsContainer.style.display = hasSuggestions ? 'block' : 'none';
+    } else {
+        suggestionsContainer.style.display = 'none'; // Hide suggestions if search term is empty
+    }
 }
 
 // Add a click listener to handle selection of autocomplete suggestions
-document.getElementById('suggestionsContainer').addEventListener('click', function(event) {
+document.getElementById('suggestionsContainer').addEventListener('click', function (event) {
     const selectedSuggestion = event.target.textContent;
     document.getElementById('searchInput').value = selectedSuggestion;
     executeSearch();
