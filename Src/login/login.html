@@ -148,16 +148,13 @@
                 </form>
             </div>
         </div>
-        <div id="messageBox" class="message-box hidden">
-            <p id="messageText"></p>
-            <button id="closeMessage">Close</button>
-        </div>
+
         <!-- Forgot Password Box -->
         <div id="forgotPasswordBox" class="message-box hidden">
             <p>Please enter your email address:</p>
             <input type="email" id="emailInput" placeholder="Enter your email address">
             <button id="submitButton">Submit</button>
-            <button id="closeForgotPassword">Close</button>
+            <button id="closeForgotPassword">Back</button>
         </div>
         <div id="resultsContainer"></div>
 
@@ -166,7 +163,12 @@
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
     </section>
-
+        <div id="messageBox" class="message-box hidden">
+            <div id="messageContent">
+                <p id="messageText"></p>
+            </div>
+            <button id="closeMessage">Close</button>
+        </div>
     <!-- JavaScript -->
     
     <script type="module" src="/Src/firebaseSDks.js"></script>

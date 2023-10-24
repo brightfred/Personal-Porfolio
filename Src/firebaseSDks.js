@@ -409,7 +409,7 @@ const pagesData = [
         title: "About-Me",
         url: "../about-me/about-me.html",
         content: "(2023-2026) Diploma: Information Technology I pursued a diploma in Information Technology at NMIT, New Zealand. Preparing me for new challenges and opportunities. (2015-2017) Diploma:Business Management Pursed in Canada,this program equipped me with business and financial knowledge . (2011-2014) Diploma: Fire Science I undertook a Diploma in Fire Science, where I gained essential insights into fire safety and emergency management. (2023-2026) Web developer I focused on becoming a skilled web developer. This period marked my exploration of coding, honing expertise in HTML, CSS, JavaScript, and beyond. (2015-2022) Agricultural Accounting and Management Honing financial acumen and strategic insights within the dynamic agricultural sector. (2014-2019) Firefighter Explored firefighting, nurturing resilience and teamwork. Gained crisis management skills that amplify my adaptability.",
-        tags: ["Education", "Web Developer", "Firefighter", "NMIT", "Canada", "New Zealand", "Agricultural Accounting and Management", "Fire Science Diploma", "Business Management Diploma", "Information Technology Diploma"]
+        tags: ["Education", "Diploma","Agriculture","Finance","Web Developer", "Firefighter", "NMIT", "Canada", "New Zealand", "Agricultural Accounting and Management", "Fire Science Diploma", "Business Management Diploma", "Information Technology Diploma"]
     },
     {
         title: "home-page",
@@ -433,7 +433,7 @@ const pagesData = [
         title: "My-Projects",
         url: "../project/project.html",
         content: "Participating in community engagement events like fire station tours, safety fairs to interact with local residents and advocate for fire safety measures. Skill applied : Public Speaking, CRYPTOCURRENCY 2020 - 2022 I have given basic formation on cryptocurrency and blockchain technology to almost 100 people. Skill applied : Learning Agility CLIENT DATABASE 2018 - 2021 I built a client database for my friend's chimney cleaning company in excel and maintained it. Skill applied : Documentation FINANCIAL CONSULTANT 2019 - 2022 I provided valuable insights and guidance to individuals seeking financial expertise. I was helping clients make informed decisions. Skill applied : Adaptability FARM DATABASE 2017 - 2022 Build a database for my father’s farm as he was doing everything with excel, I wanted to upgrade his system with SQL lite. Skill applied : Self-Teaching CODE LEARNING 2023 - 2023 I am learning Coding to improve my skill with Free code camp and flex-box and flex grid zombies game. Skill applied : Continuous learning",
-        tags: ["projects", "portfolio", "firefighter", "cryptocurrency", "client database", "financial consultant", "farm database", "code learning", "web development", "database", "finance", "agriculture"]
+        tags: ["projects", "Agriculture","Finance", "portfolio", "firefighter", "cryptocurrency", "client database", "financial consultant", "farm database", "code learning", "web development", "database", "finance", "agriculture"]
     },
     {
         title: "My-Skills",
@@ -536,13 +536,14 @@ function executeAutocomplete() {
         "soft skills",
         "technical skills",
         "CSS",
+        "Contact"
 
     ];
 
     const searchTerm = document.getElementById('searchInput').value;
     const suggestionsContainer = document.getElementById('suggestionsContainer');
     suggestionsContainer.innerHTML = '';
-    
+
     if (searchTerm) {
         let hasSuggestions = false;
         tagsArray.forEach(tag => {
@@ -550,7 +551,7 @@ function executeAutocomplete() {
                 hasSuggestions = true;
                 const suggestionItem = document.createElement('div');
                 suggestionItem.textContent = tag;
-                suggestionItem.addEventListener('click', function() {
+                suggestionItem.addEventListener('click', function () {
                     document.getElementById('searchInput').value = tag; // Set the search input to the clicked tag
                     executeSearch(tag); // Execute search with the clicked tag
                     suggestionsContainer.style.display = 'none'; // Hide suggestions when one is clicked
@@ -570,3 +571,4 @@ document.getElementById('suggestionsContainer').addEventListener('click', functi
     document.getElementById('searchInput').value = selectedSuggestion;
     executeSearch();
 });
+

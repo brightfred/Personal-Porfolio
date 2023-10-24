@@ -200,7 +200,7 @@ header .follow a:hover {
     color: var(--secondary-color);
 }
 
-/* Styles for the search button and filter button */
+/* Styles for the search button */
 .searchButton {
     width: 2.6rem;
     height: 2.3rem;
@@ -208,11 +208,12 @@ header .follow a:hover {
     text-align: center;
     color: #fff;
     border-radius: .5rem;
-    margin-left: 1rem;
-    /* Add some space between the filter input and the button */
+    margin-left: .5rem;
+    font-size: 20px;
+
 }
 
-/* Styling for the search button and filter button when hovered */
+/* Styling for the search button when hovered */
 .searchButton:hover {
     color: var(--main-color);
     transform: scale(1.20);
@@ -220,13 +221,13 @@ header .follow a:hover {
 
 .suggestions-container {
     display: none; /* Initially hidden */
-    position: fixed; /* Fixed position */
+    position: fixed; 
     font-size: 15px;
-    z-index: 1000; /* Above everything else */
-    width: 10%; /* Or whatever width you want */
-    background-color: white;
+    z-index: 1000; /* Above the header navbar */
+    width: 12%; 
+    background-color: white; opacity: 0.9;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     overflow: auto;
 }
 
@@ -418,6 +419,7 @@ section {
 
 .home .home-image img {
     width: 85%;
+    border-radius: 400px;
 }
 
 .home .content {
@@ -613,12 +615,14 @@ section {
     border-radius: 2rem;
     cursor: default;
     transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    border: #301934 solid 2px;
 }
 
 .skill .soft-skills li:hover {
     background-color: var(--main-color);
     color: var(--secondary-color);
     transform: scale(1.05);
+    border: #301934 solid 2px;
 }
 
 .skill .skills {
@@ -640,6 +644,7 @@ section {
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
     cursor: default;
+    border: #301934 solid 4px;
 }
 
 .skill .skills .progress .bar h3 {
@@ -663,6 +668,7 @@ section {
 .skill .skills .progress .bar:hover {
     transform: scale(1.05);
     background-color: var(--main-color);
+    border: #301934 solid 4px;
 }
 
 .skill .skills .progress .bar:hover h3 {
@@ -891,6 +897,7 @@ section {
     font-size: 1.7 rem;
     padding: 1rem 0;
     margin: 1rem 0;
+    border-radius: 10px;
 }
 
 .contact .row form .box:focus,
@@ -911,7 +918,7 @@ section {
 }
 
 #contact-message {
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 
@@ -998,16 +1005,41 @@ section {
     font-weight: bold;
 }
 
+#submitButton,
+#closeForgotPassword {
+    width: 60px;
+    padding: 5px 5px;
+    border: #301934 solid 2px;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin: 10px;
+    font-weight: bold;
+}
+
+#submitButton:hover,
+#closeForgotPassword:hover {
+    background-color: var(--main-color);
+    transform: scale(1.05);
+    color: var(--secondary-color);
+}
+
+
 /* Styles for Hover Effect on close message Button */
 
 #closeMessage:hover {
-    color: var(--main-color);
+    color: var(--secondary-color);
+    background-color: var(--main-color);
     transform: scale(1.05);
 }
 
 .confirm-yes:hover,
 .confirm-no:hover {
-    color: var(--main-color);
+    color: var(--secondary-color);
+    background-color: var(--main-color);
     transform: scale(1.05);
 }
 
