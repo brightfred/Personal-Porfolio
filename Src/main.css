@@ -220,15 +220,19 @@ header .follow a:hover {
 }
 
 .suggestions-container {
-    display: none; /* Initially hidden */
-    position: fixed; 
+    display: none;
+    /* Initially hidden */
+    position: fixed;
     font-size: 15px;
-    z-index: 1000; /* Above the header navbar */
-    width: 12%; 
-    background-color: white; opacity: 0.9;
+    z-index: 1000;
+    /* Above the header navbar */
+    width: 12%;
+    background-color: white;
+    opacity: 0.9;
     border: none;
     border-radius: 10px;
     overflow: auto;
+    font-weight: bold;
 }
 
 #resultsContainer {
@@ -245,7 +249,8 @@ header .follow a:hover {
 }
 
 .result a {
-    color: #FBE106;  /* or any color you desire */
+    color: #FBE106;
+    /* or any color you desire */
     font-style: italic;
     text-decoration: underline;
 }
@@ -701,37 +706,43 @@ section {
 
 /* project section starts here  */
 
-.project .project-box-container {
-    display: flex;
-    flex-wrap: wrap;
+/* General styles and container for 3 columns */
+.project {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 equal columns */
+    gap: 20px;
+    /* space between columns */
+    padding: 50px 0;
+}
+
+.project-box-container {
+    grid-column: 1 / span 2;
+    /* takes the first 2 columns */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
 }
 
-.project .project-box {
-    flex: 1 1 30rem;
+.project-box {
     height: 23rem;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 1rem 1rem black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.3);
     text-align: center;
     background-color: var(--secondary-color);
-    margin: 2rem 0;
     perspective: 1000px;
     cursor: pointer;
-
+    transition: transform 0.3s ease-in-out;
 }
 
-.project .project-box:hover {
+.project-box:hover {
     transform: scale(1.05);
 }
 
-.project .project-box .front,
-.project .project-box .back {
+.front,
+.back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -740,41 +751,38 @@ section {
     justify-content: space-evenly;
     align-items: center;
     backface-visibility: hidden;
+    transition: transform 0.5s ease-in-out;
 }
 
-.project .project-box .front {
+.front {
     background-color: var(--secondary-color);
     color: #fff;
     transform: rotateY(0deg);
 }
 
-.project .project-box .back {
+.back {
     background-color: var(--secondary-color);
     color: #fff;
     transform: rotateY(180deg);
-    display: none;
-    backface-visibility: visible;
 }
 
-.project .project-box .back p {
-    font-size: 2rem;
-    color: #fff;
+.back p {
+    font-size: 1.5rem;
 }
 
-
-.project .project-box h3 {
+.project-box h3 {
     font-size: 1.8rem;
     text-transform: uppercase;
     margin: 0;
     color: var(--main-color);
 }
 
-.project .project-box .icon {
+.icon {
     margin-top: 1rem;
     font-size: 4rem;
 }
 
-.project .project-box:hover .icon {
+.project-box:hover .icon {
     animation: bounce 0.75s ease-in-out infinite;
 }
 
@@ -790,21 +798,107 @@ section {
     }
 }
 
+.project-box.flipped .back {
+    transform: rotateY(0deg);
+}
 
+.project-box.flipped .front {
+    transform: rotateY(180deg);
+}
 
-.project .project-box.flipped .back {
+.comment-Container {
+    grid-column: 3;
+    /* takes the third column */
     display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    max-height: fit-content;
 }
 
-.project .project-box.flipped {
-    transform: rotateY(180deg);
+#commentSection {
+    align-items: start;
+    /* left-align the comments */
+    margin-bottom: 20px;
+}
+
+.comment {
+    background-color: var(--secondary-color);
+    max-width: 100%;
+    /* use the full width of the column */
+    opacity: .9;
+    padding: 10px;
+    border-radius: 5px;
+    border: #FBE106 solid 1px;
+    color: var(--main-color);
+
+}
+
+/* remove the grid-column: 3 from other classes */
+.comment-author {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.comment-text {
+    margin-top: 5px;
+    color: #fff;
+    font-size: 15px;
+}
+
+div.comment {
+    border-radius: 10px 30px;
+    margin: 10px 0px;
+}
+
+textarea#commentText {
+    border: #301934 solid 2px;
+    border-radius: 10px;
+    padding: 30px 100px 30px 40px;
 }
 
 
 
-.project .project-box-container .project-box.flipped {
-    transform: rotateY(180deg);
+
+button i.fas.fa-edit,
+#saveButton,
+#deleteButton {
+    color: #fff;
+    background-color: var(--secondary-color);
+    font-size: 20px;
+    margin: 5px;
+    transition: ease-in-out 0.3s;
+    cursor: pointer;
 }
+
+button i.fas.fa-edit:hover,
+#saveButton:hover,
+#deleteButton:hover {
+    color: var(--main-color);
+    transform: scale(1.10);
+}
+
+button {
+    background-color: var(--secondary-color);
+}
+
+#postCommentButton {
+    display: grid;
+    color: #fff;
+    border-radius: 5px 20px;
+    padding: 5px;
+    border: #FBE106 solid 1px;
+    margin: 0px 0px 0px 100px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#postCommentButton:hover {
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    border: #301934 solid 3px;
+}
+
 
 
 /* project section ends here  */
@@ -913,7 +1007,7 @@ section {
 }
 
 .contact .row form textarea {
-    height: 20rem;
+    height: 18rem;
     resize: none;
 }
 
@@ -1131,7 +1225,49 @@ section {
     .login-section {
         height: 100vh;
         flex-direction: column;
+    }
 
+    .suggestions-container {
+        width: 50%;
+        /* Takes up the full width of its parent/container */
+        height: auto;
+        /* Adjusts the height automatically based on content */
+        font-size: 1.2em;
+        font-weight: bold;
+        /* Increase font size for better readability */
+        padding: 5px;
+        /* Add more padding for better spacing */
+    }
+
+
+    .project {
+        grid-template-columns: 1fr;
+        /* One column layout for small screens */
+    }
+
+    .project-box-container,
+    .comment-Container {
+        grid-column: auto;
+        /* Removes the fixed column placement */
+    }
+
+    .comment-Container {
+        max-width: 100%;
+        /* Uses full width on small screens */
+        margin-top: 20px;
+        /* Adds some margin for separation */
+    }
+
+    #postCommentButton {
+        margin: 0 auto;
+        /* Centers the button */
+    }
+
+    textarea#commentText {
+        padding: 10px;
+        /* Reducing padding for better fit on small screens */
+        max-width: 100%;
+        /* Uses full width on small screens */
     }
 
 }

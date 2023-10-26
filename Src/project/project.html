@@ -21,15 +21,15 @@
             <a href="../skill/skill.html">Skill</a>
             <a href="../project/project.html">Project</a>
             <a href="../contact/contact.html">Contact</a>
-            
-            
+
+
             <div class="dropdown">
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search" id="searchInput">
-                <button type="submit" class="searchButton">
-                    <i class="fa fa-search"></i>    
-                </button>
-            </div>
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="Search" id="searchInput">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
             </div>
 
 
@@ -41,7 +41,7 @@
                 Login
             </a>
         </nav>
-            <div id="resultsContainer"></div>
+        <div id="resultsContainer"></div>
         <div class="follow">
 
             <a href="https://github.com/Brightfred" target="_blank" class="fab fa-github-alt"
@@ -135,6 +135,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="comment-Container">
+
+            <div id="commentSection">
+                <textarea id="commentText" placeholder="Leave a comment here" maxlength="400"></textarea>
+                <button id="postCommentButton">Post Comment</button>
+            </div>
+
+            <!-- Display comments -->
+            <div id="commentsDisplay"></div>
+        </div>
+        
         <div id="messageBox" class="message-box hidden">
             <div id="messageContent">
                 <p id="messageText"></p>
@@ -142,14 +154,16 @@
             <button id="closeMessage">Close</button>
         </div>
         <div id="resultsContainer"></div>
-        
+
+
+
         <!-- Firebase SDKs -->
 
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
         <script type="module" src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
     </section>
     <script type="module" src="/Src/firebaseSDks.js"></script>
-    <script src="project.js"></script>
+    <script type="module"  src="project.js"></script>
 </body>
 
 </html>

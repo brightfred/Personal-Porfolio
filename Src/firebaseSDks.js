@@ -21,7 +21,11 @@ import {
     setDoc,
     query,
     where,
-    getDocs
+    getDocs,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp,
+    orderBy
 } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 
 // Firebase configuration object
@@ -44,11 +48,11 @@ const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
-// Get references to HTML elements
-let menu = document.querySelector('#menu-bars');
-let header = document.querySelector('header');
+// hamburger menu for small screen (navigation bar)
+const menu = document.querySelector('#menu-bars');
+const header = document.querySelector('header');
 
-// Event listener for menu button click
+// Event listener for menu button click(toggle on the navigation bar)
 menu.onclick = () => {
     menu.classList.toggle('fa-times');
     header.classList.toggle('active');
@@ -74,29 +78,32 @@ document.getElementById('closeMessage').addEventListener('click', function () {
     document.getElementById('messageBox').classList.add('hidden');
 });
 
-// Event listener for "forgot password" link click
+// Get the element for the "forgot password" link.
 const forgotPasswordLink = document.getElementById('forgot-password');
+
+/* Event listener to show the forgot password box when the link is clicked.*/
 if (forgotPasswordLink) {
     forgotPasswordLink.addEventListener('click', function (event) {
         event.preventDefault();
-
         const forgotPasswordBox = document.getElementById('forgotPasswordBox');
         forgotPasswordBox.classList.remove('hidden');
     });
 }
 
-// Event listener for closing forgotPasswordBox
+// Get the element for the close button on the forgot password box.
 const closeForgotPassword = document.getElementById('closeForgotPassword');
+
+/* Event listener to hide the forgot password box when the close button is clicked.*/
 if (closeForgotPassword) {
     closeForgotPassword.addEventListener('click', function () {
         document.getElementById('forgotPasswordBox').classList.add('hidden');
     });
 }
 
-// Get the element with the ID 'submitButton'
+// Get the element for the password reset submit button.
 const submitButton = document.getElementById('submitButton');
 
-// Check if the element exists before adding an event listener to it
+/* Event listener for sending a password reset email to the provided email address.*/
 if (submitButton) {
     submitButton.addEventListener('click', function () {
         const emailInput = document.getElementById('emailInput');
@@ -116,8 +123,11 @@ if (submitButton) {
     });
 }
 
-// Event listener for registration form submission
+// Get the registration form element.
 const registrationForm = document.getElementById('registration-form');
+
+/*Event listener for the registration form submission.
+It registers a new user and handles errors.*/
 if (registrationForm) {
     registrationForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -141,12 +151,12 @@ if (registrationForm) {
     });
 }
 
-// Get references to modal buttons and modals
+// Get references to elements related to the registration modal.
 const showRegisterModalBtn = document.getElementById('show-register-modal');
 const closeRegisterModalBtn = document.getElementById('close-register-modal');
 const registerModal = document.getElementById('register-modal');
 
-// Event listeners for showing and hiding the registration modal
+/* Event listeners for showing and hiding the registration modal.*/
 if (showRegisterModalBtn && closeRegisterModalBtn && registerModal) {
     showRegisterModalBtn.addEventListener('click', function () {
         registerModal.style.display = 'block';
@@ -154,107 +164,25 @@ if (showRegisterModalBtn && closeRegisterModalBtn && registerModal) {
     closeRegisterModalBtn.addEventListener('click', function () {
         registerModal.style.display = 'none';
     });
-    // Close the modal if user clicks outside of it
+
+    // Close the modal if the user clicks outside of it.
     window.onclick = function (event) {
-        if (event.target == registerModal) {
+        if (event.target === registerModal) {
             registerModal.style.display = 'none';
         }
     };
 }
 
-// Get references to OAuth login buttons
-const loginWithGoogleBtn = document.getElementById('login-with-google');
-const loginWithFacebookBtn = document.getElementById('login-with-facebook');
-const loginWithGithubBtn = document.getElementById('login-with-github');
-
-// Event listeners for OAuth login buttons
-if (loginWithGoogleBtn) {
-    loginWithGoogleBtn.addEventListener('click', function () {
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                showMessage('Successfully logged in with Google!');
-                location.reload();
-            })
-            .catch((error) => {
-                showMessage(error.message);
-            });
-    });
-}
-
-if (loginWithFacebookBtn) {
-    loginWithFacebookBtn.addEventListener('click', function () {
-        signInWithPopup(auth, facebookProvider)
-            .then((result) => {
-                showMessage('Successfully logged in with Facebook!');
-                location.reload();
-            })
-            .catch((error) => {
-                showMessage(error.message);
-            });
-    });
-}
-
-if (loginWithGithubBtn) {
-    loginWithGithubBtn.addEventListener('click', function () {
-        signInWithPopup(auth, githubProvider)
-            .then((result) => {
-                showMessage('Successfully logged in with GitHub!');
-                location.reload();
-            })
-            .catch((error) => {
-                showMessage(error.message);
-            });
-    });
-}
-
-// Flag to check if the message box is displayed
-let isMessageBoxDisplayed = false;
-
-// Updated event listener for closing messageBox to manage the flag
-document.getElementById('closeMessage').addEventListener('click', function () {
-    document.getElementById('messageBox').classList.add('hidden');
-    isMessageBoxDisplayed = false;  // Reset the flag when the close button is clicked
-});
-
-// Firebase Auth state change listener
-onAuthStateChanged(auth, user => {
-    if (user) {
-        const userDoc = doc(firestore, 'users', user.uid);
-        setDoc(userDoc, {
-            email: user.email,
-        });
-    }
-});
-
-// login link based on auth state
-auth.onAuthStateChanged(user => {
-    const loginLink = document.getElementById('showLoginModal');
-    if (user) {
-        if (loginLink) {
-            loginLink.innerHTML = '<span class="fa-solid fa-user"></span> Log Out';
-            loginLink.href = '#';
-            loginLink.title = 'Log Out';
-
-            loginLink.addEventListener('click', function (event) {
-                event.preventDefault();
-                showLogoutConfirmation();
-            });
-        }
-    } else {
-        if (loginLink) {
-            loginLink.innerHTML = '<span class="fa-solid fa-user"></span> Login';
-            loginLink.href = '/Src/login/login.html';
-            loginLink.title = 'Login';
-        }
-    }
-});
-
+/* Displays the logout confirmation message with 'Yes' and 'No' buttons.*/
 function showLogoutConfirmation() {
+    // Get the message box and message text DOM elements.
     const messageBox = document.getElementById('messageBox');
     const messageText = document.getElementById('messageText');
 
+    // Remove any previously displayed buttons.
     removeExistingButtons();
 
+    // Create 'Yes' and 'No' buttons for the logout confirmation.
     const confirmYes = document.createElement('button');
     const confirmNo = document.createElement('button');
 
@@ -264,24 +192,27 @@ function showLogoutConfirmation() {
     confirmYes.className = 'confirm-button confirm-yes';
     confirmNo.className = 'confirm-button confirm-no';
 
+    // Set the confirmation message and button texts.
     messageText.textContent = 'Are you sure you want to log out?';
     confirmYes.textContent = 'Yes';
     confirmNo.textContent = 'No';
 
+    // Add the buttons to the message box and display it.
     messageBox.appendChild(confirmYes);
     messageBox.appendChild(confirmNo);
     messageBox.classList.remove('hidden');
 
+    // Attach event listeners to the buttons.
     confirmYes.addEventListener('click', function () {
         logoutUser();
     });
-
     confirmNo.addEventListener('click', function () {
         messageBox.classList.add('hidden');
         removeExistingButtons();
     });
 }
 
+/* Removes any existing 'Yes' and 'No' buttons from the message box.*/
 function removeExistingButtons() {
     const existingYes = document.getElementById('confirmYes');
     const existingNo = document.getElementById('confirmNo');
@@ -291,25 +222,62 @@ function removeExistingButtons() {
     if (existingNo) messageBox.removeChild(existingNo);
 }
 
+/* Handles the logout process for the user.*/
 function logoutUser() {
     const messageBox = document.getElementById('messageBox');
+    // Hide the message box and remove any buttons.
     messageBox.classList.add('hidden');
     removeExistingButtons();
 
-    signOut(auth).then(() => {
-        showMessage('Logged out successfully!');
-        location.reload();
-    }).catch((error) => {
-        console.error("Error logging out: ", error);
-        showMessage('Failed to log out. Please try again.');
-    });
+    // Attempt to log out the user.
+    signOut(auth)
+        .then(() => {
+            showMessage('Logged out successfully!');
+            location.reload();
+        })
+        .catch((error) => {
+            console.error("Error logging out: ", error);
+            showMessage('Failed to log out. Please try again.');
+        });
 }
 
+/* Displays a given message to the user.*/
 function showMessage(message) {
     const messageBox = document.getElementById('messageBox');
     const messageText = document.getElementById('messageText');
     messageText.textContent = message;
     messageBox.classList.remove('hidden');
+}
+
+
+
+/* Removes any existing 'Yes' and 'No' buttons from the message box.*/
+function removeExistingYesNoButtons() {
+    const existingYes = document.getElementById('confirmYes');
+    const existingNo = document.getElementById('confirmNo');
+    const messageBox = document.getElementById('messageBox');
+
+    if (existingYes) messageBox.removeChild(existingYes);
+    if (existingNo) messageBox.removeChild(existingNo);
+}
+
+/* Handles the logout process for the user.*/
+function logoutUsers() {
+    const messageBox = document.getElementById('messageBox');
+    // Hide the message box and remove any buttons.
+    messageBox.classList.add('hidden');
+    removeExistingButtons();
+
+    // Attempt to log out the user.
+    signOut(auth)
+        .then(() => {
+            showMessage('Logged out successfully!');
+            location.reload();
+        })
+        .catch((error) => {
+            console.error("Error logging out: ", error);
+            showMessage('Failed to log out. Please try again.');
+        });
 }
 
 // Get reference to the login form
@@ -342,12 +310,10 @@ if (loginForm) {
     });
 }
 
-
-
 // Search functionality
 
-
 // Function to initialize event listeners once DOM is loaded
+
 function initialize() {
     const searchButton = document.querySelector('.searchButton');
     const searchInput = document.getElementById('searchInput');
@@ -375,17 +341,12 @@ function populateTagsDropdown() {
     });
 }
 
-
-
 // Event listener for autocomplete suggestions click
 document.getElementById('suggestionsContainer').addEventListener('click', function (event) {
     const selectedSuggestion = event.target.textContent;
     document.getElementById('searchInput').value = selectedSuggestion;
     executeSearch();
 });
-
-
-
 
 // Call initialize function once DOM is loaded
 document.addEventListener('DOMContentLoaded', initialize);
@@ -409,7 +370,7 @@ const pagesData = [
         title: "About-Me",
         url: "../about-me/about-me.html",
         content: "(2023-2026) Diploma: Information Technology I pursued a diploma in Information Technology at NMIT, New Zealand. Preparing me for new challenges and opportunities. (2015-2017) Diploma:Business Management Pursed in Canada,this program equipped me with business and financial knowledge . (2011-2014) Diploma: Fire Science I undertook a Diploma in Fire Science, where I gained essential insights into fire safety and emergency management. (2023-2026) Web developer I focused on becoming a skilled web developer. This period marked my exploration of coding, honing expertise in HTML, CSS, JavaScript, and beyond. (2015-2022) Agricultural Accounting and Management Honing financial acumen and strategic insights within the dynamic agricultural sector. (2014-2019) Firefighter Explored firefighting, nurturing resilience and teamwork. Gained crisis management skills that amplify my adaptability.",
-        tags: ["Education", "Diploma","Agriculture","Finance","Web Developer", "Firefighter", "NMIT", "Canada", "New Zealand", "Agricultural Accounting and Management", "Fire Science Diploma", "Business Management Diploma", "Information Technology Diploma"]
+        tags: ["Education", "Diploma", "Agriculture", "Finance", "Web Developer", "Firefighter", "NMIT", "Canada", "New Zealand", "Agricultural Accounting and Management", "Fire Science Diploma", "Business Management Diploma", "Information Technology Diploma"]
     },
     {
         title: "home-page",
@@ -433,7 +394,7 @@ const pagesData = [
         title: "My-Projects",
         url: "../project/project.html",
         content: "Participating in community engagement events like fire station tours, safety fairs to interact with local residents and advocate for fire safety measures. Skill applied : Public Speaking, CRYPTOCURRENCY 2020 - 2022 I have given basic formation on cryptocurrency and blockchain technology to almost 100 people. Skill applied : Learning Agility CLIENT DATABASE 2018 - 2021 I built a client database for my friend's chimney cleaning company in excel and maintained it. Skill applied : Documentation FINANCIAL CONSULTANT 2019 - 2022 I provided valuable insights and guidance to individuals seeking financial expertise. I was helping clients make informed decisions. Skill applied : Adaptability FARM DATABASE 2017 - 2022 Build a database for my father’s farm as he was doing everything with excel, I wanted to upgrade his system with SQL lite. Skill applied : Self-Teaching CODE LEARNING 2023 - 2023 I am learning Coding to improve my skill with Free code camp and flex-box and flex grid zombies game. Skill applied : Continuous learning",
-        tags: ["projects", "Agriculture","Finance", "portfolio", "firefighter", "cryptocurrency", "client database", "financial consultant", "farm database", "code learning", "web development", "database", "finance", "agriculture"]
+        tags: ["projects", "Agriculture", "Finance", "portfolio", "firefighter", "cryptocurrency", "client database", "financial consultant", "farm database", "code learning", "web development", "database", "finance", "agriculture"]
     },
     {
         title: "My-Skills",
@@ -443,40 +404,47 @@ const pagesData = [
     }
 ];
 
-pagesData.forEach(pageData => indexPage(pageData));
+// Index each page from the `pagesData` array
+pagesData.forEach((pageData) => indexPage(pageData));
 
-// Function to execute a search
-// Function to execute a search
-function executeSearch(searchTermOverride) {
+// Function to search Firestore based on input and optionally, a selected tag
+const executeSearch = (searchTermOverride) => {
+    // Get the search term either from the argument or from the input element
     const searchTerm = searchTermOverride || document.getElementById('searchInput').value;
+
+    // Reference to the Firestore collection of pages
     const pagesCollection = collection(firestore, 'pages');
+
+    // Get the currently selected tag from the dropdown, if it exists
     const selectedTagDropdown = document.getElementById('selectedTagDropdown');
     const selectedTag = selectedTagDropdown ? selectedTagDropdown.value : null;
+
+    // Create a query to Firestore based on search term and, if available, a selected tag
     let q;
     if (selectedTag) {
-        // If a tag is selected, filter by both search term and tag
         q = query(
             pagesCollection,
             where('tags', 'array-contains', searchTerm),
             where('tags', 'array-contains', selectedTag)
         );
     } else {
-        // If no tag is selected, filter by search term only
         q = query(pagesCollection, where('tags', 'array-contains', searchTerm));
     }
 
+    // Execute the query to Firestore
     getDocs(q)
         .then((querySnapshot) => {
-            let results = [];
+            const results = [];
             querySnapshot.forEach((doc) => {
                 results.push(doc.data());
             });
 
-            // If a tag is selected, filter the results
+            // If a tag is selected, further filter the results by that tag
             if (selectedTag) {
                 results = results.filter(result => result.tags.includes(selectedTag));
             }
 
+            // Display the results or a 'no results' message
             if (results.length > 0) {
                 displayResults(results);
             } else {
@@ -484,17 +452,17 @@ function executeSearch(searchTermOverride) {
             }
         })
         .catch((error) => {
-            console.error("Error getting documents: ", error);
+            console.error('Error getting documents: ', error);
             errorFeedback();
         });
-}
-
+};
 
 // Function to display search results
-function displayResults(results) {
+const displayResults = (results) => {
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '';
-    results.forEach(result => {
+
+    results.forEach((result) => {
         const resultDiv = document.createElement('div');
         resultDiv.className = 'result';
 
@@ -505,39 +473,25 @@ function displayResults(results) {
         resultDiv.appendChild(resultLink);
         resultsContainer.appendChild(resultDiv);
     });
-}
+};
 
 // Function to display no results feedback
-function noResultsFeedback() {
+const noResultsFeedback = () => {
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '<p>No results found.</p>';
-}
+};
 
 // Function to display error feedback
-function errorFeedback() {
+const errorFeedback = () => {
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '<p>An error occurred while searching. Please try again.</p>';
-}
+};
 
-function executeAutocomplete() {
+const executeAutocomplete = () => {
     const tagsArray = [
-        "Education",
-        "Web Developer",
-        "Agriculture",
-        "Finance",
-        "Experience",
-        "Diploma",
-        "login",
-        "account",
-        "projects",
-        "HTML",
-        "Email",
-        "Message",
-        "soft skills",
-        "technical skills",
-        "CSS",
-        "Contact"
-
+        'Education', 'Web Developer', 'Agriculture', 'Finance', 'Experience',
+        'Diploma', 'login', 'account', 'projects', 'HTML', 'Email',
+        'Message', 'soft skills', 'technical skills', 'CSS', 'Contact',
     ];
 
     const searchTerm = document.getElementById('searchInput').value;
@@ -546,27 +500,32 @@ function executeAutocomplete() {
 
     if (searchTerm) {
         let hasSuggestions = false;
-        tagsArray.forEach(tag => {
+
+        tagsArray.forEach((tag) => {
             if (tag.toLowerCase().includes(searchTerm.toLowerCase())) {
                 hasSuggestions = true;
+
                 const suggestionItem = document.createElement('div');
                 suggestionItem.textContent = tag;
-                suggestionItem.addEventListener('click', function () {
-                    document.getElementById('searchInput').value = tag; // Set the search input to the clicked tag
-                    executeSearch(tag); // Execute search with the clicked tag
-                    suggestionsContainer.style.display = 'none'; // Hide suggestions when one is clicked
+
+                suggestionItem.addEventListener('click', () => {
+                    document.getElementById('searchInput').value = tag;
+                    executeSearch(tag);
+                    suggestionsContainer.style.display = 'none';
                 });
+
                 suggestionsContainer.appendChild(suggestionItem);
             }
         });
+
         suggestionsContainer.style.display = hasSuggestions ? 'block' : 'none';
     } else {
-        suggestionsContainer.style.display = 'none'; // Hide suggestions if search term is empty
+        suggestionsContainer.style.display = 'none';
     }
-}
+};
 
 // Add a click listener to handle selection of autocomplete suggestions
-document.getElementById('suggestionsContainer').addEventListener('click', function (event) {
+document.getElementById('suggestionsContainer').addEventListener('click', (event) => {
     const selectedSuggestion = event.target.textContent;
     document.getElementById('searchInput').value = selectedSuggestion;
     executeSearch();
