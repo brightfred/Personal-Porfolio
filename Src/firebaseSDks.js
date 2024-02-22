@@ -223,6 +223,12 @@ function removeExistingButtons() {
 }
 
 /* Handles the logout process for the user.*/
+/* 
+Handles the logout process for a user.
+Hides the message box, removes any buttons, attempts to sign the user out, 
+and reloads the page upon successful logout or shows an error message upon failure.*/
+
+
 function logoutUser() {
     const messageBox = document.getElementById('messageBox');
     // Hide the message box and remove any buttons.
@@ -283,6 +289,12 @@ function logoutUsers() {
 // Get reference to the login form
 const loginForm = document.getElementById('login-form');
 
+/*
+Sets up an event listener for the login form to handle user authentication.
+Fetches email and password, then attempts to sign in using Firebase Auth.
+On success, displays a message and reloads the page. On failure, displays an error message.
+ */
+
 if (loginForm) {
     loginForm.addEventListener('submit', function (event) {
         // Prevent the default form submission behavior
@@ -298,8 +310,6 @@ if (loginForm) {
                 // Signed in 
                 const user = userCredential.user;
                 showMessage('Successfully logged in!');
-                // Optionally, redirect to another page or reload the current page
-                // location.reload();
             })
             .catch((error) => {
                 // Handle errors here.
@@ -309,8 +319,6 @@ if (loginForm) {
             });
     });
 }
-
-// Search functionality
 
 // Function to initialize event listeners once DOM is loaded
 
@@ -330,7 +338,11 @@ function initialize() {
     });
 }
 
-// Function to populate the tags dropdown
+
+
+/*
+Populates the tags dropdown menu with options from the `tagsArray`.
+*/
 function populateTagsDropdown() {
     const tagDropdown = document.getElementById('tagDropdown');
     tagsArray.forEach(tag => {
@@ -407,7 +419,13 @@ const pagesData = [
 // Index each page from the `pagesData` array
 pagesData.forEach((pageData) => indexPage(pageData));
 
+
 // Function to search Firestore based on input and optionally, a selected tag
+
+/*
+Executes a search in Firestore based on user input and selected tags.
+Fetches and displays results that match the search criteria.
+*/
 const executeSearch = (searchTermOverride) => {
     // Get the search term either from the argument or from the input element
     const searchTerm = searchTermOverride || document.getElementById('searchInput').value;
@@ -457,7 +475,10 @@ const executeSearch = (searchTermOverride) => {
         });
 };
 
-// Function to display search results
+/*
+Displays search results in the results container.
+Each result is a link to the corresponding page.
+*/
 const displayResults = (results) => {
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '';
@@ -475,18 +496,27 @@ const displayResults = (results) => {
     });
 };
 
-// Function to display no results feedback
+/*
+Displays a message in the results container when no matches are found.
+ */
 const noResultsFeedback = () => {
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '<p>No results found.</p>';
 };
 
-// Function to display error feedback
+/*
+Displays an error message in the results container if there's an issue during search.
+*/
 const errorFeedback = () => {
     const resultsContainer = document.getElementById('resultsContainer');
     resultsContainer.innerHTML = '<p>An error occurred while searching. Please try again.</p>';
 };
 
+
+/*
+Generates and displays autocomplete suggestions as the user types in the search input.
+Filters suggestions from the `tagsArray` based on current input.
+*/
 const executeAutocomplete = () => {
     const tagsArray = [
         'Education', 'Web Developer', 'Agriculture', 'Finance', 'Experience',
